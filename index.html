@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SendNReceive - Your World, Instantly Connected</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-brand">
+        <img src="images/SendNReceive_LOGO_3STAR.PNG" alt="EYM App Logo" class="nav-logo" />
+      </div>
+      <div class="nav-buttons">
+        <div class="nav-menu">
+          <div class="nav-menu-item">
+            <a href="#">Individual</a>
+            <div class="nav-dropdown">
+              <a href="#">Send Money</a>
+              <a href="#">Receive Money</a>
+              <a href="#">Virtual Cards</a>
+              <a href="#">Savings</a>
+            </div>
+          </div>
+          <div class="nav-menu-item">
+            <a href="#">Business</a>
+            <div class="nav-dropdown">
+              <a href="#">Business Payments</a>
+              <a href="#">Merchant Services</a>
+              <a href="#">API Integration</a>
+              <a href="#">Analytics</a>
+            </div>
+          </div>
+          <div class="nav-menu-item">
+            <a href="#">Our Company</a>
+            <div class="nav-dropdown">
+              <a href="#">About Us</a>
+              <a href="#">Careers</a>
+              <a href="#">Press</a>
+              <a href="#">Contact</a>
+            </div>
+          </div>
+        </div>
+        <div class="language-selector">
+          <select class="lang-select premium-select" aria-label="Select language">
+            <option value="en">🇺🇸 English</option>
+            <option value="fr">🇫🇷 Français</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="pt">🇵🇹 Português</option>
+            <option value="ar">🇸🇦 العربية</option>
+            <option value="zh">🇨🇳 中文</option>
+            <option value="hi">🇮🇳 हिन्दी</option>
+            <option value="sw">🇰🇪 Swahili</option>
+            <option value="yo">🇳🇬 Yorùbá</option>
+            <option value="ha">🇳🇬 Hausa</option>
+            <option value="tw">🇬🇭 Twi</option>
+          </select>
+        </div>
+        <a href="#" class="btn-login">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" style="vertical-align:middle;margin-right:6px;"><circle cx="10" cy="7" r="4" stroke="#1e40af" stroke-width="2"/><path d="M3 17c0-2.2091 3.134-4 7-4s7 1.7909 7 4" stroke="#1e40af" stroke-width="2"/></svg>
+          Login
+        </a>
+        <a href="#" class="btn-signup">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" style="vertical-align:middle;margin-right:6px;"><circle cx="10" cy="7" r="4" stroke="#fff" stroke-width="2"/><path d="M3 17c0-2.2091 3.134-4 7-4s7 1.7909 7 4" stroke="#fff" stroke-width="2"/><path d="M15 6h4m-2-2v4" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+          Sign Up
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero fade-in" id="hero">
+    <div class="video-bg">
+      <video autoplay muted loop playsinline poster="" id="heroVideo">
+        <source src="videos/global-network.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <h1>Your World, Instantly Connected</h1>
+        <p>Experience rapid, secure, and extremely low fee cross-border money transfers. EYM Wallet leverages USDC and EURC stablecoins to deliver instant, low-cost remittances. Unlock the future of digital finance for individuals and businesses alike.</p>
+        <div class="app-buttons">
+          <a href="#" class="btn-app-store">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+            </svg>
+            <div class="btn-text">
+              <span class="btn-label">Download on the</span>
+              <span class="btn-name">App Store</span>
+            </div>
+          </a>
+          <a href="#" class="btn-google-play">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+            </svg>
+            <div class="btn-text">
+              <span class="btn-label">GET IT ON</span>
+              <span class="btn-name">Google Play</span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <!-- Placeholder for phone and cards SVG -->
+        <svg width="220" height="420" viewBox="0 0 220 420"><rect x="20" y="20" width="180" height="380" rx="30" fill="#222e50" stroke="#fff" stroke-width="4"/></svg>
+      </div>
+    </div>
+  </header>
+
+  <section class="how-it-works fade-in" id="how-it-works">
+    <div class="container">
+      <h2>How It Works</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-icon">1</div>
+          <h3>Sign Up</h3>
+          <p>Create your free account in minutes with your phone or email.</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">2</div>
+          <h3>Add Funds</h3>
+          <p>Deposit money using your preferred payment method or receive from abroad.</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">3</div>
+          <h3>Send or Spend</h3>
+          <p>Transfer money instantly, pay bills, or shop online and in-store.</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">4</div>
+          <h3>Track & Save</h3>
+          <p>Monitor your transactions and save securely in stablecoins.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="exchange-rate fade-in" id="exchange-rate">
+    <div class="container">
+      <h2>Remittance Calculator</h2>
+      <p class="calculator-subtitle">See how much your recipient will get and how much you save with SendNReceive.</p>
+      <div class="calculator-tooltip">
+        <span class="tooltip-icon">ℹ️</span>
+        <span class="tooltip-text">Real-time exchange rates • Zero fees for individuals • Instant transfers</span>
+      </div>
+      <form class="exchange-form">
+        <div class="exchange-selects">
+          <input type="number" min="1" step="1" value="100" id="calcAmount" class="calc-amount" required aria-label="Amount to send" />
+          <select class="currency-select premium-select" id="calcFrom" aria-label="Currency to send from">
+            <option value="USD">🇺🇸 USD - US Dollar</option>
+            <option value="EUR">🇪🇺 EUR - Euro</option>
+            <option value="GBP">🇬🇧 GBP - British Pound</option>
+            <option value="GHS">🇬🇭 GHS - Ghanaian Cedi</option>
+            <option value="NGN">🇳🇬 NGN - Nigerian Naira</option>
+            <option value="KES">🇰🇪 KES - Kenyan Shilling</option>
+            <option value="UGX">🇺🇬 UGX - Ugandan Shilling</option>
+            <option value="ZAR">🇿🇦 ZAR - South African Rand</option>
+            <option value="ZMW">🇿🇲 ZMW - Zambian Kwacha</option>
+            <option value="CAD">🇨🇦 CAD - Canadian Dollar</option>
+            <option value="AUD">🇦🇺 AUD - Australian Dollar</option>
+            <option value="CHF">🇨🇭 CHF - Swiss Franc</option>
+          </select>
+          <span class="exchange-arrow" aria-hidden="true">→</span>
+          <select class="currency-select premium-select" id="calcTo" aria-label="Currency to send to">
+            <option value="GHS">🇬🇭 GHS - Ghanaian Cedi</option>
+            <option value="USD">🇺🇸 USD - US Dollar</option>
+            <option value="EUR">🇪🇺 EUR - Euro</option>
+            <option value="GBP">🇬🇧 GBP - British Pound</option>
+            <option value="NGN">🇳🇬 NGN - Nigerian Naira</option>
+            <option value="KES">🇰🇪 KES - Kenyan Shilling</option>
+            <option value="UGX">🇺🇬 UGX - Ugandan Shilling</option>
+            <option value="ZAR">🇿🇦 ZAR - South African Rand</option>
+            <option value="ZMW">🇿🇲 ZMW - Zambian Kwacha</option>
+            <option value="CAD">🇨🇦 CAD - Canadian Dollar</option>
+            <option value="AUD">🇦🇺 AUD - Australian Dollar</option>
+            <option value="CHF">🇨🇭 CHF - Swiss Franc</option>
+          </select>
+          <button type="submit" class="calc-submit-btn" aria-label="Calculate remittance amount">Calculate</button>
+        </div>
+        <div class="calc-results" id="calcResults">
+          <div class="calc-main-result">
+            <div class="result-label">Recipient gets:</div>
+            <div class="result-amount" id="calcConverted">1,450.00 GHS</div>
+          </div>
+          <div class="calc-compare">
+            <span class="calc-badge success">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="margin-right: 6px;"><path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/></svg>
+              SendNReceive: <b>0% fee</b>
+            </span>
+            <span class="calc-badge warning">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="margin-right: 6px;"><path d="M12 9V13M12 17H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/></svg>
+              Typical Bank: <b id="calcBankFee">$6.00 fee</b>
+            </span>
+          </div>
+          <div class="calc-savings">
+            <span class="savings-text">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="margin-right: 8px; vertical-align: middle;"><path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              You save <span id="calcSavings" class="savings-amount">$6.00</span> with SendNReceive!
+            </span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="market-overview fade-in" id="market-overview">
+    <div class="container">
+      <h2>Market Overview</h2>
+      <div class="overview-grid">
+        <div class="overview-item">
+          <h3>Ghana & Africa Focus</h3>
+          <p>Launching in Ghana's $4.7B remittance market, EYM Wallet aims to expand across Africa, including Nigeria, Uganda, South Africa, and Zambia. Our app addresses the need for fast, affordable, and secure cross-border payments for individuals and businesses.</p>
+        </div>
+        <div class="overview-item highlighted">
+          <h3>Stablecoin Advantage</h3>
+          <p>Using USDC and EURC stablecoins, we minimize currency conversion losses and offer beneficiaries a stronger local currency equivalent. EURC appeals to the European diaspora, leveraging the euro's strength to enhance purchasing power and trust.</p>
+        </div>
+        <div class="overview-item">
+          <h3>Scalable & Inclusive</h3>
+          <p>Solana's blockchain enables high-volume, real-time settlement with near-zero fees. Our platform supports both individuals and businesses, integrating with local mobile money providers for seamless access and liquidity.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="why-mobile fade-in" id="why-mobile">
+    <div class="container split">
+      <div class="why-content">
+        <h2>Why Blockchain Remittances?</h2>
+        <p>EYM Wallet redefines remittances with instant, fee-free transfers for individuals and low-cost business payments. Users can save in stablecoins to avoid inflation, access virtual credit cards, and make online or in-store payments. Our educational content in local languages empowers users to make informed financial decisions.</p>
+      </div>
+      <div class="why-image">
+        <!-- Placeholder for phone and dollar SVG -->
+        <svg width="220" height="420" viewBox="0 0 220 420"><rect x="20" y="20" width="180" height="380" rx="30" fill="#1e3a8a" stroke="#fff" stroke-width="4"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="security-features fade-in" id="security-features">
+    <div class="container split">
+      <div class="security-image">
+        <!-- Placeholder for shield SVG -->
+        <svg width="180" height="180" viewBox="0 0 180 180"><ellipse cx="90" cy="90" rx="80" ry="80" fill="#1e3a8a"/><text x="50" y="100" font-size="24" fill="#fff">&#128274;</text></svg>
+      </div>
+      <div class="security-content">
+        <h2>Security & Compliance</h2>
+        <h3>Trust Through Technology</h3>
+        <p>Our app employs cutting-edge encryption, biometric authentication, and real-time fraud detection. Strategic partnerships with Fincra, Utila, and Orca Fraud ensure regulatory compliance and operational security. We are actively pursuing all necessary remittance licenses, leveraging our partners' expertise to navigate the regulatory landscape.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="app-carousel fade-in" id="app-carousel">
+    <div class="container">
+      <h2>App Screenshots</h2>
+      <p class="carousel-subtitle">See how easy it is to send, receive, and manage your money with SendNReceive.</p>
+      <div class="carousel-wrapper premium-carousel">
+        <button class="carousel-btn left" id="carouselLeft" aria-label="Previous screenshot">&#8592;</button>
+        <div class="carousel-track" id="carouselTrack">
+          <div class="carousel-phone-frame">
+            <svg class="carousel-phone-svg" width="220" height="420" viewBox="0 0 220 420" style="position:absolute;z-index:1;left:0;top:0;"><rect x="20" y="20" width="180" height="380" rx="30" fill="#222e50" stroke="#fff" stroke-width="4"/></svg>
+            <img src="images/app-screenshot1.png" alt="App Screenshot 1" class="carousel-img carousel-img-on-phone" />
+          </div>
+          <div class="carousel-phone-frame">
+            <svg class="carousel-phone-svg" width="220" height="420" viewBox="0 0 220 420" style="position:absolute;z-index:1;left:0;top:0;"><rect x="20" y="20" width="180" height="380" rx="30" fill="#222e50" stroke="#fff" stroke-width="4"/></svg>
+            <img src="images/app-screenshot2.png" alt="App Screenshot 2" class="carousel-img carousel-img-on-phone" />
+          </div>
+          <div class="carousel-phone-frame">
+            <svg class="carousel-phone-svg" width="220" height="420" viewBox="0 0 220 420" style="position:absolute;z-index:1;left:0;top:0;"><rect x="20" y="20" width="180" height="380" rx="30" fill="#222e50" stroke="#fff" stroke-width="4"/></svg>
+            <img src="images/app-screenshot3.png" alt="App Screenshot 3" class="carousel-img carousel-img-on-phone" />
+          </div>
+          <div class="carousel-phone-frame">
+            <svg class="carousel-phone-svg" width="220" height="420" viewBox="0 0 220 420" style="position:absolute;z-index:1;left:0;top:0;"><rect x="20" y="20" width="180" height="380" rx="30" fill="#222e50" stroke="#fff" stroke-width="4"/></svg>
+            <img src="images/app-screenshot4.png" alt="App Screenshot 4" class="carousel-img carousel-img-on-phone" />
+          </div>
+        </div>
+        <button class="carousel-btn right" id="carouselRight" aria-label="Next screenshot">&#8594;</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="user-friendly fade-in" id="user-friendly">
+    <div class="container split">
+      <div class="user-image">
+        <!-- Placeholder for monitor SVG -->
+        <svg width="220" height="160" viewBox="0 0 220 160"><rect x="20" y="20" width="180" height="100" rx="10" fill="#222e50" stroke="#fff" stroke-width="4"/></svg>
+      </div>
+      <div class="user-content">
+        <h2>User-Friendly Experience</h2>
+        <p>Our intuitive interface makes digital transactions accessible for all users. From seamless onboarding to visually appealing design, EYM Wallet ensures a smooth experience for sending, receiving, and managing funds.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="innovation fade-in" id="innovation">
+    <div class="container split">
+      <div class="innovation-content">
+        <h2>Innovation in Technology</h2>
+        <p>Leveraging Solana's high throughput and near-zero fees ($0.00025/tx), our app supports high-volume micropayments and real-time settlement. We integrate with Ghana's Mobile Money Payment Interoperability System for broad accessibility and liquidity.</p>
+      </div>
+      <div class="innovation-image">
+        <!-- Placeholder for rocket SVG -->
+        <svg width="120" height="120" viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="#2563eb"/><text x="40" y="70" font-size="32" fill="#fff">&#128640;</text></svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="integration fade-in" id="integration">
+    <div class="container">
+      <h2>Integration with Daily Life</h2>
+      <p>EYM Wallet seamlessly integrates with local mobile money providers like MTN Ghana, Airtel, and Vodafone, enabling instant payments, business transactions, and everyday purchases. Our platform supports the local economy by increasing liquidity and purchasing power.</p>
+    </div>
+  </section>
+
+  <section class="future-trends fade-in" id="future-trends">
+    <div class="container split">
+      <div class="future-image">
+        <!-- Placeholder for bar chart SVG -->
+        <svg width="120" height="120" viewBox="0 0 120 120"><rect x="20" y="60" width="20" height="40" fill="#38bdf8"/><rect x="50" y="40" width="20" height="60" fill="#818cf8"/><rect x="80" y="20" width="20" height="80" fill="#f472b6"/></svg>
+      </div>
+      <div class="future-content">
+        <h2>Growth & Financial Targets</h2>
+        <p>Our goal: $100,000 annual turnover within 12–18 months (from Jan 2026), capturing 1.12% of Ghana's digital remittance market by 2028. We project profitability by Year 2, with revenues of $333,600 and costs of $114,000, driving sustainable growth and scalability.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq fade-in" id="faq">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">Is my money safe with SendNReceive?</button>
+          <div class="faq-answer">Yes! We are licensed and regulated by the SEC, use bank-level encryption, and partner with trusted payment providers.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">What are the fees for sending money?</button>
+          <div class="faq-answer">For individuals, cross-border transfers are free. Business and merchant fees are transparent and competitive.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">How fast are transfers?</button>
+          <div class="faq-answer">Most transfers are instant or settle within minutes, thanks to blockchain technology and our payment partners.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Which countries and currencies are supported?</button>
+          <div class="faq-answer">We support USD, EUR, GHS, NGN, and more. Coverage is expanding—see our app for the latest list.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="security-badges fade-in" id="security-badges">
+    <div class="container">
+      <h2>Security & Compliance</h2>
+      <div class="badges-row">
+        <div class="badge premium-badge">
+          <!-- Shield/Check for SEC Licensed -->
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none"><defs><linearGradient id="secg" x1="0" y1="0" x2="44" y2="44" gradientUnits="userSpaceOnUse"><stop stop-color="#1e40af"/><stop offset="1" stop-color="#3b82f6"/></linearGradient></defs><path d="M22 6L36 12V22C36 31.5 22 38 22 38C22 38 8 31.5 8 22V12L22 6Z" fill="url(#secg)" stroke="#fff" stroke-width="2"/><path d="M17 23L21 27L28 20" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>SEC Licensed</span>
+        </div>
+        <div class="badge premium-badge">
+          <!-- Lock for SSL Secured -->
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none"><rect x="10" y="20" width="24" height="14" rx="6" fill="#fff" stroke="#1e40af" stroke-width="2"/><rect x="16" y="14" width="12" height="10" rx="6" fill="#3b82f6"/><rect x="20" y="28" width="4" height="6" rx="2" fill="#1e40af"/></svg>
+          <span>SSL Secured</span>
+        </div>
+        <div class="badge premium-badge">
+          <!-- GDPR icon -->
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="18" fill="#fff" stroke="#1e40af" stroke-width="2"/><text x="22" y="28" text-anchor="middle" font-size="14" fill="#1e40af" font-weight="bold">GDPR</text><circle cx="22" cy="22" r="10" stroke="#3b82f6" stroke-width="2"/></svg>
+          <span>GDPR Compliant</span>
+        </div>
+        <div class="badge premium-badge">
+          <!-- PCI DSS icon (credit card with shield) -->
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none"><rect x="8" y="14" width="28" height="16" rx="5" fill="#fff" stroke="#1e40af" stroke-width="2"/><rect x="8" y="20" width="28" height="4" fill="#3b82f6"/><circle cx="32" cy="30" r="6" fill="#1e40af"/><path d="M32 27v3l2 2" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+          <span>PCI DSS Certified</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="newsletter fade-in" id="newsletter">
+    <div class="container">
+      <h2>Stay Updated</h2>
+      <p class="newsletter-subtitle">Subscribe to our newsletter for the latest updates, tips, and exclusive offers.</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Enter your email address" required />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+
+
+  <!-- Move social media buttons to a fixed floating element -->
+  <div class="social-media-fixed">
+    <div class="social-buttons">
+      <a href="#" class="social-btn" aria-label="X (Twitter)">
+        <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#18181B"/><path d="M22.5 9.5L9.5 22.5M9.5 9.5L22.5 22.5" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+      </a>
+      <a href="#" class="social-btn" aria-label="Instagram">
+        <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#E1306C"/><circle cx="16" cy="16" r="7" stroke="#fff" stroke-width="2"/><circle cx="22" cy="10" r="1.5" fill="#fff"/></svg>
+      </a>
+      <a href="#" class="social-btn" aria-label="YouTube">
+        <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#FF0000"/><polygon points="13,11 23,16 13,21" fill="#fff"/></svg>
+      </a>
+      <a href="#" class="social-btn" aria-label="LinkedIn">
+        <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#0A66C2"/><rect x="10" y="14" width="3" height="8" fill="#fff"/><rect x="19" y="17" width="3" height="5" fill="#fff"/><circle cx="11.5" cy="11.5" r="1.5" fill="#fff"/><rect x="15" y="14" width="3" height="2" fill="#fff"/><rect x="15" y="17" width="3" height="5" fill="#fff"/></svg>
+      </a>
+      <a href="#" class="social-btn" aria-label="TikTok">
+        <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#000000"/><path d="M16 8C18.2091 8 20 9.79086 20 12V16C20 18.2091 18.2091 20 16 20C13.7909 20 12 18.2091 12 16V12C12 9.79086 13.7909 8 16 8Z" fill="#FF0050"/><path d="M20 12H24V16C24 18.2091 22.2091 20 20 20V12Z" fill="#25F4EE"/></svg>
+      </a>
+      <a href="#" class="social-btn" aria-label="Facebook">
+        <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#1877F2"/><path d="M22 16C22 12.6863 19.3137 10 16 10C12.6863 10 10 12.6863 10 16C10 19.3137 12.6863 22 16 22C19.3137 22 22 19.3137 22 16Z" fill="#1877F2"/><path d="M18 14H16C15.4477 14 15 14.4477 15 15V17C15 17.5523 15.4477 18 16 18H18C18.5523 18 19 17.5523 19 17V15C19 14.4477 18.5523 14 18 14Z" fill="#FFFFFF"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <footer class="contact fade-in" id="contact">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Legal</h3>
+          <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Cookie Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">User Agreement</a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Support</h3>
+          <div class="footer-links">
+            <a href="#">Help Center</a>
+            <a href="#">Contact Support</a>
+            <a href="#">FAQ</a>
+            <a href="#">Report Issue</a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Company</h3>
+          <div class="footer-links">
+            <a href="#">About Us</a>
+            <a href="#">Careers</a>
+            <a href="#">Press</a>
+            <a href="#">Blog</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 EYM App. All rights reserved.</p>
+        <p class="sec-license">Licensed and regulated by the Securities and Exchange Commission (SEC)</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cookie Consent Banner -->
+  <div class="cookie-banner" id="cookieBanner">
+    <span>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies. <a href="#" class="cookie-link">Learn more</a>.</span>
+    <button class="cookie-accept" id="cookieAccept">Accept</button>
+  </div>
+
+  <!-- Contact/Support Widget -->
+  <button class="support-widget-btn" id="supportWidgetBtn" aria-label="Contact Support">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#1e40af"/><path d="M8 10h8M8 14h5" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="18" cy="18" r="3" fill="#fbbf24"/></svg>
+    <span>Support</span>
+  </button>
+  <div class="support-modal" id="supportModal">
+    <div class="support-modal-content">
+      <button class="support-modal-close" id="supportModalClose" aria-label="Close">&times;</button>
+      <h3>Contact Support</h3>
+      <form class="support-form">
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea placeholder="How can we help you?" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = { threshold: 0.2 };
+    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
+    });
+
+    // Navbar scroll opacity effect
+    const navbar = document.querySelector('.navbar');
+    let lastScrollTop = 0;
+
+    window.addEventListener('scroll', function() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      // Add scrolled class when scrolling down
+      if (scrollTop > 100) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+      
+      lastScrollTop = scrollTop;
+    });
+
+    // Cookie banner logic
+    document.addEventListener('DOMContentLoaded', function() {
+      const banner = document.getElementById('cookieBanner');
+      const acceptBtn = document.getElementById('cookieAccept');
+      if (localStorage.getItem('cookieAccepted')) {
+        banner.style.display = 'none';
+      }
+      acceptBtn.addEventListener('click', function() {
+        banner.style.display = 'none';
+        localStorage.setItem('cookieAccepted', 'true');
+      });
+    });
+
+    // Enhanced calculator logic with more currencies
+    const calcRates = {
+      // USD pairs
+      'USD_GHS': 14.5, 'USD_NGN': 1500, 'USD_KES': 160, 'USD_UGX': 3800, 'USD_ZAR': 18.5, 'USD_ZMW': 25.8,
+      'USD_CAD': 1.35, 'USD_AUD': 1.52, 'USD_CHF': 0.88, 'USD_GBP': 0.79,
+      // EUR pairs
+      'EUR_GHS': 15.7, 'EUR_NGN': 1630, 'EUR_KES': 174, 'EUR_UGX': 4130, 'EUR_ZAR': 20.1, 'EUR_ZMW': 28.0,
+      'EUR_CAD': 1.47, 'EUR_AUD': 1.65, 'EUR_CHF': 0.96, 'EUR_GBP': 0.86,
+      // GBP pairs
+      'GBP_GHS': 18.3, 'GBP_NGN': 1900, 'GBP_KES': 203, 'GBP_UGX': 4810, 'GBP_ZAR': 23.4, 'GBP_ZMW': 32.6,
+      'GBP_CAD': 1.71, 'GBP_AUD': 1.92, 'GBP_CHF': 1.12,
+      // African currencies
+      'GHS_NGN': 103, 'GHS_KES': 11.0, 'GHS_UGX': 262, 'GHS_ZAR': 1.28, 'GHS_ZMW': 1.78,
+      'NGN_KES': 0.107, 'NGN_UGX': 2.53, 'NGN_ZAR': 0.0123, 'NGN_ZMW': 0.0172,
+      'KES_UGX': 23.8, 'KES_ZAR': 0.116, 'KES_ZMW': 0.161,
+      'UGX_ZAR': 0.00487, 'UGX_ZMW': 0.00679,
+      'ZAR_ZMW': 1.39,
+      // Reverse pairs
+      'GHS_USD': 0.069, 'NGN_USD': 0.00067, 'KES_USD': 0.00625, 'UGX_USD': 0.00026, 'ZAR_USD': 0.054, 'ZMW_USD': 0.0388,
+      'GHS_EUR': 0.064, 'NGN_EUR': 0.00061, 'KES_EUR': 0.00575, 'UGX_EUR': 0.00024, 'ZAR_EUR': 0.0498, 'ZMW_EUR': 0.0357,
+      'GHS_GBP': 0.055, 'NGN_GBP': 0.00053, 'KES_GBP': 0.00493, 'UGX_GBP': 0.00021, 'ZAR_GBP': 0.0427, 'ZMW_GBP': 0.0307,
+      'CAD_USD': 0.741, 'AUD_USD': 0.658, 'CHF_USD': 1.136, 'GBP_USD': 1.266,
+      'CAD_EUR': 0.680, 'AUD_EUR': 0.606, 'CHF_EUR': 1.042, 'GBP_EUR': 1.163,
+      'CAD_GBP': 0.585, 'AUD_GBP': 0.521, 'CHF_GBP': 0.893
+    };
+
+    function updateCalc() {
+      const resultsDiv = document.getElementById('calcResults');
+      resultsDiv.classList.add('updating');
+      
+      setTimeout(() => {
+        const amount = parseFloat(document.getElementById('calcAmount').value) || 0;
+        const from = document.getElementById('calcFrom').value;
+        const to = document.getElementById('calcTo').value;
+        const key = `${from}_${to}`;
+        const rate = calcRates[key];
+        const converted = rate ? (amount * rate) : 0;
+      
+      document.getElementById('calcConverted').textContent = rate ? 
+        `${converted.toLocaleString(undefined, {maximumFractionDigits: 2})} ${to}` : 'N/A';
+      
+      // Calculate typical bank fee: 6% of amount, min $6 equivalent
+      let bankFee = Math.max(amount * 0.06, 6);
+      if (from !== 'USD') {
+        const usdRate = calcRates[`${from}_USD`] || 1;
+        bankFee = Math.max(amount * 0.06, 6 * usdRate);
+      }
+      
+      document.getElementById('calcBankFee').textContent = 
+        `${bankFee.toLocaleString(undefined, {maximumFractionDigits: 2})} ${from} fee`;
+      
+      // Calculate and display savings
+      const savings = bankFee;
+      document.getElementById('calcSavings').textContent = 
+        `${savings.toLocaleString(undefined, {maximumFractionDigits: 2})} ${from}`;
+        
+      resultsDiv.classList.remove('updating');
+      }, 150);
+    }
+
+    // Add event listeners for the new calculator
+    document.getElementById('calcAmount').addEventListener('input', updateCalc);
+    document.getElementById('calcFrom').addEventListener('change', updateCalc);
+    document.getElementById('calcTo').addEventListener('change', updateCalc);
+    document.querySelector('.exchange-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      updateCalc();
+    });
+    
+    // Initialize calculator
+    updateCalc();
+
+    // FAQ accordion logic
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const answer = this.nextElementSibling;
+        answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+
+    // Simple carousel logic
+    const track = document.getElementById('carouselTrack');
+    const leftBtn = document.getElementById('carouselLeft');
+    const rightBtn = document.getElementById('carouselRight');
+    let scrollAmount = 0;
+    const scrollStep = 240;
+    leftBtn.addEventListener('click', () => {
+      track.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+    });
+    rightBtn.addEventListener('click', () => {
+      track.scrollBy({ left: scrollStep, behavior: 'smooth' });
+    });
+
+    // Support widget logic
+    const supportBtn = document.getElementById('supportWidgetBtn');
+    const supportModal = document.getElementById('supportModal');
+    const supportClose = document.getElementById('supportModalClose');
+    supportBtn.addEventListener('click', () => {
+      supportModal.style.display = 'flex';
+    });
+    supportClose.addEventListener('click', () => {
+      supportModal.style.display = 'none';
+    });
+    supportModal.addEventListener('click', (e) => {
+      if (e.target === supportModal) supportModal.style.display = 'none';
+    });
+    document.querySelector('.support-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      supportModal.style.display = 'none';
+      alert('Thank you! Your message has been sent.');
+    });
+
+    // Newsletter form logic
+    document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      this.reset();
+      alert('Thank you for subscribing!');
+    });
+
+
+  </script>
+</body>
+</html> 

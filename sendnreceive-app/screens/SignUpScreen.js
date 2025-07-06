@@ -1,102 +1,124 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, ActivityIndicator, Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-
-// (handleSignUp function remains the same)
-const handleSignUp = (name, email, password, navigation) => {
-  console.log('SignUp attempt with:', name, email, password);
-  alert('Sign Up Successful (mock)! Please Login.');
-  navigation.navigate('Login');
-};
+import { Colors } from '../constants/Colors';
+import { Typography } from '../constants/Typography';
 
 const SignUpScreen = ({ navigation }) => {
+  const [isLoading, setIsLoading] = useState(false); // Local loading state for signup
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  // Mock signup function
+  const handleSignUp = async () => {
+    if (!name.trim() || !email.trim() || !password.trim()) {
+      Alert.alert('Validation Error', 'Please fill in all fields.');
+      return;
+    }
+    setIsLoading(true);
+    console.log('SignUp attempt with:', name, email); // Avoid logging password
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    setIsLoading(false);
+    Alert.alert('Sign Up Successful (mock)!', 'Please proceed to Login.');
+    navigation.navigate('Login');
+  };
+
   return (
     <View style={styles.container}>
-      <Ionicons name="person-add-outline" size={50} color="#004AAD" style={styles.logoPlaceholder} />
+      <Ionicons name="person-add-outline" size={50} color={Colors.primary} style={styles.logoPlaceholder} />
       <Text style={styles.appName}>Join SendNReceive</Text>
       <Text style={styles.tagline}>Fast, Secure, and Zero Fee Transactions</Text>
 
       <View style={styles.inputContainer}>
-        <Ionicons name="person-outline" size={22} color="#888" style={styles.inputIcon} />
+        <Ionicons name="person-outline" size={22} color={Colors.textMuted} style={styles.inputIcon} />
         <TextInput
           style={styles.input}
           placeholder="Full Name"
-          placeholderTextColor="#888"
+          placeholderTextColor={Colors.textMuted}
           value={name}
           onChangeText={setName}
           autoCapitalize="words"
+          editable={!isLoading}
         />
       </View>
       <View style={styles.inputContainer}>
-        <Ionicons name="mail-outline" size={22} color="#888" style={styles.inputIcon} />
+        <Ionicons name="mail-outline" size={22} color={Colors.textMuted} style={styles.inputIcon} />
         <TextInput
           style={styles.input}
           placeholder="Email Address"
-          placeholderTextColor="#888"
+          placeholderTextColor={Colors.textMuted}
           value={email}
           onChangeText={setEmail}
           keyboardType="email-address"
           autoCapitalize="none"
+          editable={!isLoading}
         />
       </View>
       <View style={styles.inputContainer}>
-        <Ionicons name="lock-closed-outline" size={22} color="#888" style={styles.inputIcon} />
+        <Ionicons name="lock-closed-outline" size={22} color={Colors.textMuted} style={styles.inputIcon} />
         <TextInput
           style={styles.input}
           placeholder="Password"
-          placeholderTextColor="#888"
+          placeholderTextColor={Colors.textMuted}
           value={password}
           onChangeText={setPassword}
           secureTextEntry
+          editable={!isLoading}
         />
       </View>
 
-      <TouchableOpacity style={styles.button} onPress={() => handleSignUp(name, email, password, navigation)}>
-        <Text style={styles.buttonText}>Create Account</Text>
+      <TouchableOpacity
+        style={[styles.button, isLoading && styles.buttonDisabled]}
+        onPress={handleSignUp}
+        disabled={isLoading}
+      >
+        {isLoading ? (
+          <ActivityIndicator color={Colors.cardBackground} />
+        ) : (
+          <Text style={styles.buttonText}>Create Account</Text>
+        )}
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+      <TouchableOpacity onPress={() => navigation.navigate('Login')} disabled={isLoading}>
         <Text style={styles.linkText}>Already have an account? <Text style={styles.linkTextBold}>Login</Text></Text>
       </TouchableOpacity>
     </View>
   );
 };
 
-// Using similar styles to LoginScreen for consistency
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 25,
-    backgroundColor: '#f0f4f7',
+    backgroundColor: Colors.background,
   },
-  logoPlaceholder: { // Slightly different icon for variety
+  logoPlaceholder: {
     marginBottom: 10,
   },
-  appName: { // Slightly different title for context
-    fontSize: 30,
-    fontWeight: 'bold',
-    color: '#004AAD',
+  appName: {
+    ...Typography.header,
+    color: Colors.primary,
+    fontSize: 28,
     marginBottom: 8,
   },
   tagline: {
-    fontSize: 16,
-    color: '#555',
+    ...Typography.bodyText,
+    color: Colors.textMuted,
     marginBottom: 40,
     textAlign: 'center',
     fontStyle: 'italic',
+    fontSize: 14,
   },
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: Colors.cardBackground,
     borderWidth: 1,
-    borderColor: '#ddd',
+    borderColor: '#E0E0E0',
     borderRadius: 12,
     marginBottom: 18,
     paddingHorizontal: 15,
@@ -105,15 +127,14 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   input: {
+    ...Typography.bodyText,
     flex: 1,
     height: 55,
-    fontSize: 16,
-    color: '#333',
   },
   button: {
     width: '100%',
     height: 55,
-    backgroundColor: '#00C853', // Accent green for sign up
+    backgroundColor: Colors.accent,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 12,
@@ -124,14 +145,17 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 3,
   },
+  buttonDisabled: {
+    backgroundColor: Colors.textMuted,
+  },
   buttonText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: 'bold',
+    ...Typography.buttonText,
+    color: Colors.cardBackground, // Ensure contrast with accent color
   },
   linkText: {
-    color: '#004AAD',
-    fontSize: 16,
+    ...Typography.bodyText,
+    color: Colors.primary,
+    fontSize: 15,
   },
   linkTextBold: {
     fontWeight: 'bold',

@@ -1,15 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, Alert, ScrollView } from 'react-native';
+import React, { useState, useEffect, useContext } from 'react'; // Added useContext
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, Alert, ScrollView, Platform, SafeAreaView, ActivityIndicator } from 'react-native'; // Added SafeAreaView, ActivityIndicator
 import { Ionicons } from '@expo/vector-icons';
+import { Colors } from '../constants/Colors';
+import { Typography } from '../constants/Typography';
+// Assuming TransactionContext might be used to add a transaction after sending
+// import { TransactionContext } from '../contexts/TransactionContext';
 
-// Mock conversion rate
-const MOCK_CONVERSION_RATE_USD_TO_KES = 130.50;
+const MOCK_CONVERSION_RATE_USD_TO_KES = 130.50; // Example rate
 
 const SendMoneyScreen = ({ navigation }) => {
+  // const { addTransaction } = useContext(TransactionContext); // If adding transaction to context
   const [recipient, setRecipient] = useState('');
   const [amountUSD, setAmountUSD] = useState('');
   const [amountKES, setAmountKES] = useState('');
   const [note, setNote] = useState('');
+  const [isLoading, setIsLoading] = useState(false); // For send button
 
   useEffect(() => {
     if (amountUSD && !isNaN(parseFloat(amountUSD))) {
@@ -20,8 +25,8 @@ const SendMoneyScreen = ({ navigation }) => {
     }
   }, [amountUSD]);
 
-  const handleSendMoney = () => {
-    if (!recipient) {
+  const handleSendMoney = async () => {
+    if (!recipient.trim()) {
       Alert.alert('Recipient Required', 'Please enter recipient details.');
       return;
     }
@@ -29,48 +34,57 @@ const SendMoneyScreen = ({ navigation }) => {
       Alert.alert('Invalid Amount', 'Please enter a valid amount to send.');
       return;
     }
-    // Mock send money action
+    setIsLoading(true);
+    await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate API call
+
     Alert.alert(
-      'Send Money',
+      'Send Money (Mock)',
       `Successfully sent $${amountUSD} (KES ${amountKES}) to ${recipient}. Note: ${note || 'N/A'}`
     );
+    setIsLoading(false);
     setRecipient('');
     setAmountUSD('');
     setNote('');
-    // navigation.navigate('Dashboard');
+    // Consider navigation.goBack() or to a success/transaction detail screen
   };
 
   return (
+    <SafeAreaView style={styles.safeArea}>
     <View style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
-          <Ionicons name="arrow-back-outline" size={28} color="#fff" />
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton} disabled={isLoading}>
+          <Ionicons name="arrow-back-outline" size={28} color={Colors.cardBackground} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Send Money</Text>
+        <View style={{width:28}}/> {/* Spacer for centering title */}
       </View>
 
-      <ScrollView style={styles.content}>
+      <ScrollView style={styles.contentScroll} contentContainerStyle={styles.contentContainer} keyboardShouldPersistTaps="handled">
         <Text style={styles.label}>Recipient (Email, Phone, or Username)</Text>
         <TextInput
           style={styles.input}
-          placeholder="e.g., user@example.com or +2547XXXXXXXX"
+          placeholder="e.g., user@example.com"
+          placeholderTextColor={Colors.textMuted}
           value={recipient}
           onChangeText={setRecipient}
+          editable={!isLoading}
         />
 
         <Text style={styles.label}>Amount to Send (USD)</Text>
         <TextInput
           style={styles.input}
           placeholder="e.g., 50"
+          placeholderTextColor={Colors.textMuted}
           keyboardType="numeric"
           value={amountUSD}
           onChangeText={setAmountUSD}
+          editable={!isLoading}
         />
 
         {amountKES ? (
           <View style={styles.conversionBox}>
             <Text style={styles.conversionText}>
-              Recipient will receive approximately:
+              Recipient will receive approx:
               <Text style={styles.conversionAmount}> KES {amountKES}</Text>
             </Text>
             <Text style={styles.conversionRateText}>
@@ -83,96 +97,123 @@ const SendMoneyScreen = ({ navigation }) => {
         <TextInput
           style={[styles.input, styles.textArea]}
           placeholder="e.g., For school fees"
+          placeholderTextColor={Colors.textMuted}
           value={note}
           onChangeText={setNote}
           multiline
+          editable={!isLoading}
         />
 
-        <TouchableOpacity style={styles.sendButton} onPress={handleSendMoney}>
-          <Text style={styles.sendButtonText}>Send Money</Text>
+        <TouchableOpacity
+            style={[styles.sendButton, isLoading && styles.buttonDisabled]}
+            onPress={handleSendMoney}
+            disabled={isLoading}
+        >
+          {isLoading ? (
+            <ActivityIndicator color={Colors.cardBackground} />
+          ) : (
+            <Text style={styles.sendButtonText}>Confirm & Send</Text>
+          )}
         </TouchableOpacity>
       </ScrollView>
     </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: Colors.primary,
+  },
   container: {
     flex: 1,
-    backgroundColor: '#f0f4f7',
+    backgroundColor: Colors.background,
   },
   header: {
-    backgroundColor: '#004AAD',
-    paddingTop: 50,
+    backgroundColor: Colors.primary,
+    paddingTop: Platform.OS === 'android' ? 20 : 10,
     paddingBottom: 15,
     paddingHorizontal: 15,
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
   },
   backButton: {
-    marginRight: 15,
+    padding: 5,
   },
   headerTitle: {
+    ...Typography.subHeader,
+    color: Colors.cardBackground,
     fontSize: 20,
-    fontWeight: 'bold',
-    color: '#fff',
   },
-  content: {
+  contentScroll: {
+    flex: 1,
+  },
+  contentContainer: {
     padding: 20,
   },
   label: {
-    fontSize: 16,
-    color: '#333',
+    ...Typography.bodyText,
+    color: Colors.textMuted,
     marginBottom: 8,
     marginTop: 15,
+    fontWeight: '600',
   },
   input: {
+    ...Typography.bodyText,
     width: '100%',
     height: 50,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.cardBackground,
     borderWidth: 1,
-    borderColor: '#ddd',
-    borderRadius: 8,
+    borderColor: '#E0E0E0',
+    borderRadius: 10,
     paddingHorizontal: 15,
-    marginBottom: 10, // Reduced margin for tighter layout
-    fontSize: 16,
+    marginBottom: 15,
   },
   textArea: {
     height: 100,
-    textAlignVertical: 'top', // For Android
-    paddingTop: 15, // For iOS
+    textAlignVertical: 'top',
+    paddingTop: 15,
   },
   conversionBox: {
-    backgroundColor: '#e6f0ff', // Light blue background
+    backgroundColor: Colors.promotionBackground,
     padding: 15,
-    borderRadius: 8,
-    marginBottom: 15,
+    borderRadius: 10,
+    marginBottom: 20,
     borderWidth: 1,
-    borderColor: '#b3d1ff', // Lighter blue border
+    borderColor: Colors.primary,
   },
   conversionText: {
-    fontSize: 16,
-    color: '#004AAD', // Primary brand color
+    ...Typography.bodyText,
+    color: Colors.primary,
+    fontSize: 15,
   },
   conversionAmount: {
     fontWeight: 'bold',
   },
   conversionRateText: {
-    fontSize: 12,
-    color: '#555',
+    ...Typography.smallText,
     marginTop: 5,
   },
   sendButton: {
-    backgroundColor: '#004AAD', // Primary brand color
-    paddingVertical: 15,
-    borderRadius: 8,
+    backgroundColor: Colors.accent,
+    paddingVertical: 16,
+    borderRadius: 10,
     alignItems: 'center',
     marginTop: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.15,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  buttonDisabled: {
+    backgroundColor: Colors.textMuted,
   },
   sendButtonText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: 'bold',
+    ...Typography.buttonText,
+    color: Colors.cardBackground,
   },
 });
 

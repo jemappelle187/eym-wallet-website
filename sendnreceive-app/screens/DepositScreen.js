@@ -1,12 +1,16 @@
+// sendnreceive-app/screens/DepositScreen.js
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, Alert, Platform, SafeAreaView, ActivityIndicator, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { Colors } from '../constants/Colors';
+import { Typography } from '../constants/Typography';
 
 const DepositScreen = ({ navigation }) => {
   const [amount, setAmount] = useState('');
-  const [paymentMethod, setPaymentMethod] = useState(null); // e.g., 'card', 'bank', 'mobile_money'
+  const [paymentMethod, setPaymentMethod] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleDeposit = () => {
+  const handleDeposit = async () => {
     if (!amount || parseFloat(amount) <= 0) {
       Alert.alert('Invalid Amount', 'Please enter a valid amount to deposit.');
       return;
@@ -15,14 +19,15 @@ const DepositScreen = ({ navigation }) => {
       Alert.alert('Payment Method', 'Please select a payment method.');
       return;
     }
-    // Mock deposit action
-    Alert.alert('Deposit Initiated', `Successfully initiated deposit of $${amount} via ${paymentMethod}.`);
+    setIsLoading(true);
+    await new Promise(resolve => setTimeout(resolve, 1500));
+
+    Alert.alert('Deposit Initiated (Mock)', `Successfully initiated deposit of $${amount} via ${paymentMethod}.`);
+    setIsLoading(false);
     setAmount('');
     setPaymentMethod(null);
-    // navigation.goBack(); // Optionally navigate back or to transactions
   };
 
-  // Mock payment methods
   const paymentOptions = [
     { id: 'card', label: 'Credit/Debit Card', icon: 'card-outline' },
     { id: 'bank', label: 'Bank Transfer', icon: 'business-outline' },
@@ -30,136 +35,170 @@ const DepositScreen = ({ navigation }) => {
   ];
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
-          <Ionicons name="arrow-back-outline" size={28} color="#fff" />
-        </TouchableOpacity>
-        <Text style={styles.headerTitle}>Deposit Funds</Text>
-      </View>
-
-      <View style={styles.content}>
-        <Text style={styles.label}>Enter Amount (USD)</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="e.g., 100"
-          keyboardType="numeric"
-          value={amount}
-          onChangeText={setAmount}
-        />
-
-        <Text style={styles.label}>Select Payment Method</Text>
-        {paymentOptions.map(option => (
-          <TouchableOpacity
-            key={option.id}
-            style={[
-              styles.paymentOption,
-              paymentMethod === option.id && styles.selectedPaymentOption
-            ]}
-            onPress={() => setPaymentMethod(option.id)}
-          >
-            <Ionicons
-              name={option.icon}
-              size={24}
-              color={paymentMethod === option.id ? '#fff' : '#004AAD'}
-              style={styles.paymentIcon}
-            />
-            <Text
-              style={[
-                styles.paymentOptionText,
-                paymentMethod === option.id && styles.selectedPaymentOptionText
-              ]}
-            >
-              {option.label}
-            </Text>
+    <SafeAreaView style={styles.safeArea}>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton} disabled={isLoading}>
+            <Ionicons name="arrow-back-outline" size={28} color={Colors.cardBackground} />
           </TouchableOpacity>
-        ))}
+          <Text style={styles.headerTitle}>Deposit Funds</Text>
+          <View style={{width:28}}/>
+        </View>
 
-        <TouchableOpacity style={styles.depositButton} onPress={handleDeposit}>
-          <Text style={styles.depositButtonText}>Confirm Deposit</Text>
-        </TouchableOpacity>
+        <ScrollView contentContainerStyle={styles.contentContainer} keyboardShouldPersistTaps="handled">
+          <Text style={styles.label}>Enter Amount (USD)</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="e.g., 100"
+            placeholderTextColor={Colors.textMuted}
+            keyboardType="numeric"
+            value={amount}
+            onChangeText={setAmount}
+            editable={!isLoading}
+          />
+
+          <Text style={styles.label}>Select Payment Method</Text>
+          {paymentOptions.map(option => (
+            <TouchableOpacity
+              key={option.id}
+              style={[
+                styles.paymentOption,
+                paymentMethod === option.id && styles.selectedPaymentOption
+              ]}
+              onPress={() => setPaymentMethod(option.id)}
+              disabled={isLoading}
+            >
+              <Ionicons
+                name={option.icon}
+                size={24}
+                color={paymentMethod === option.id ? Colors.cardBackground : Colors.primary}
+                style={styles.paymentIcon}
+              />
+              <Text
+                style={[
+                  styles.paymentOptionText,
+                  paymentMethod === option.id && styles.selectedPaymentOptionText
+                ]}
+              >
+                {option.label}
+              </Text>
+              {paymentMethod === option.id && (
+                <Ionicons name="checkmark-circle" size={24} color={Colors.cardBackground} style={styles.selectedIcon} />
+              )}
+            </TouchableOpacity>
+          ))}
+
+          <TouchableOpacity
+            style={[styles.actionButton, isLoading && styles.buttonDisabled]}
+            onPress={handleDeposit}
+            disabled={isLoading}
+          >
+            {isLoading ? (
+              <ActivityIndicator color={Colors.cardBackground} />
+            ) : (
+              <Text style={styles.actionButtonText}>Confirm Deposit</Text>
+            )}
+          </TouchableOpacity>
+        </ScrollView>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: Colors.primary,
+  },
   container: {
     flex: 1,
-    backgroundColor: '#f0f4f7',
+    backgroundColor: Colors.background,
   },
   header: {
-    backgroundColor: '#004AAD',
-    paddingTop: 50,
+    backgroundColor: Colors.primary,
+    paddingTop: Platform.OS === 'android' ? 20 : 10,
     paddingBottom: 15,
     paddingHorizontal: 15,
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
   },
   backButton: {
-    marginRight: 15,
+    padding: 5,
   },
   headerTitle: {
+    ...Typography.subHeader,
+    color: Colors.cardBackground,
     fontSize: 20,
-    fontWeight: 'bold',
-    color: '#fff',
   },
-  content: {
+  contentContainer: {
     padding: 20,
   },
   label: {
-    fontSize: 16,
-    color: '#333',
+    ...Typography.bodyText,
+    color: Colors.textMuted,
     marginBottom: 8,
     marginTop: 15,
+    fontWeight: '600',
   },
   input: {
+    ...Typography.bodyText,
     width: '100%',
     height: 50,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.cardBackground,
     borderWidth: 1,
-    borderColor: '#ddd',
-    borderRadius: 8,
+    borderColor: '#E0E0E0',
+    borderRadius: 10,
     paddingHorizontal: 15,
     marginBottom: 20,
-    fontSize: 16,
   },
   paymentOption: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#fff',
-    paddingVertical: 15,
+    backgroundColor: Colors.cardBackground,
+    paddingVertical: 18,
     paddingHorizontal: 15,
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: '#ddd',
-    marginBottom: 10,
+    borderRadius: 10,
+    borderWidth: 1.5,
+    borderColor: Colors.textMuted,
+    marginBottom: 12,
   },
   selectedPaymentOption: {
-    backgroundColor: '#004AAD',
-    borderColor: '#004AAD',
+    backgroundColor: Colors.primary,
+    borderColor: Colors.primary,
   },
   paymentIcon: {
-    marginRight: 10,
+    marginRight: 15,
   },
   paymentOptionText: {
-    fontSize: 16,
-    color: '#004AAD',
+    ...Typography.bodyText,
+    color: Colors.primary,
+    fontWeight: '600',
+    flex: 1,
   },
   selectedPaymentOptionText: {
-    color: '#fff',
+    color: Colors.cardBackground,
   },
-  depositButton: {
-    backgroundColor: '#00C853', // A success green
-    paddingVertical: 15,
-    borderRadius: 8,
+  selectedIcon: {
+    marginLeft: 'auto',
+  },
+  actionButton: {
+    backgroundColor: Colors.success,
+    paddingVertical: 16,
+    borderRadius: 10,
     alignItems: 'center',
     marginTop: 30,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.15,
+    shadowRadius: 4,
+    elevation: 3,
   },
-  depositButtonText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: 'bold',
+  buttonDisabled: {
+    backgroundColor: Colors.textMuted,
+  },
+  actionButtonText: {
+    ...Typography.buttonText,
   },
 });
 

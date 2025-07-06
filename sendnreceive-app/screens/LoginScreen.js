@@ -1,59 +1,68 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image } from 'react-native'; // Added Image
+import React, { useState, useContext } from 'react'; // Added useContext
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, ActivityIndicator, Alert } from 'react-native'; // Added ActivityIndicator, Alert
 import { Ionicons } from '@expo/vector-icons';
+import { Colors } from '../constants/Colors';
+import { Typography } from '../constants/Typography';
+import { AuthContext } from '../contexts/AuthContext';
 
-// (handleLoginPress function remains the same)
-const handleLoginPress = (email, password, onLoginSuccess) => {
-  console.log('Login attempt with:', email, password);
-  if (onLoginSuccess) {
-    onLoginSuccess();
-  } else {
-    alert('Login Successful (mock)!');
-  }
-};
-
-
-const LoginScreen = ({ navigation, onLoginSuccess }) => {
+const LoginScreen = ({ navigation }) => {
+  const { login, isLoading } = useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const handleLoginPress = () => {
+    if (!email.trim() || !password.trim()) { // Added trim() for basic validation
+        Alert.alert("Validation Error", "Please enter both email and password.");
+        return;
+    }
+    login(email, password);
+  };
+
   return (
     <View style={styles.container}>
-      {/* Replace with actual logo if available */}
-      {/* <Image source={require('../assets/logo.png')} style={styles.logo} /> */}
-      <Ionicons name="paper-plane-outline" size={60} color="#004AAD" style={styles.logoPlaceholder} />
+      <Ionicons name="paper-plane-outline" size={60} color={Colors.primary} style={styles.logoPlaceholder} />
       <Text style={styles.appName}>SendNReceive</Text>
       <Text style={styles.tagline}>Africa to World, World to Africa – Zero Fees</Text>
 
       <View style={styles.inputContainer}>
-        <Ionicons name="mail-outline" size={22} color="#888" style={styles.inputIcon} />
+        <Ionicons name="mail-outline" size={22} color={Colors.textMuted} style={styles.inputIcon} />
         <TextInput
           style={styles.input}
           placeholder="Email Address"
-          placeholderTextColor="#888"
+          placeholderTextColor={Colors.textMuted}
           value={email}
           onChangeText={setEmail}
           keyboardType="email-address"
           autoCapitalize="none"
+          editable={!isLoading}
         />
       </View>
       <View style={styles.inputContainer}>
-        <Ionicons name="lock-closed-outline" size={22} color="#888" style={styles.inputIcon} />
+        <Ionicons name="lock-closed-outline" size={22} color={Colors.textMuted} style={styles.inputIcon} />
         <TextInput
           style={styles.input}
           placeholder="Password"
-          placeholderTextColor="#888"
+          placeholderTextColor={Colors.textMuted}
           value={password}
           onChangeText={setPassword}
           secureTextEntry
+          editable={!isLoading}
         />
       </View>
 
-      <TouchableOpacity style={styles.button} onPress={() => handleLoginPress(email, password, onLoginSuccess)}>
-        <Text style={styles.buttonText}>Login</Text>
+      <TouchableOpacity
+        style={[styles.button, isLoading && styles.buttonDisabled]}
+        onPress={handleLoginPress}
+        disabled={isLoading}
+      >
+        {isLoading ? (
+          <ActivityIndicator color={Colors.cardBackground} />
+        ) : (
+          <Text style={styles.buttonText}>Login</Text>
+        )}
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+      <TouchableOpacity onPress={() => navigation.navigate('SignUp')} disabled={isLoading}>
         <Text style={styles.linkText}>Don't have an account? <Text style={styles.linkTextBold}>Sign Up</Text></Text>
       </TouchableOpacity>
     </View>
@@ -66,30 +75,31 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 25,
-    backgroundColor: '#f0f4f7',
+    backgroundColor: Colors.background,
   },
   logoPlaceholder: {
     marginBottom: 10,
   },
   appName: {
-    fontSize: 36,
-    fontWeight: 'bold',
-    color: '#004AAD', // Primary brand color
+    ...Typography.header,
+    color: Colors.primary,
+    fontSize: 32,
     marginBottom: 8,
   },
   tagline: {
-    fontSize: 16,
-    color: '#555',
+    ...Typography.bodyText,
+    color: Colors.textMuted,
     marginBottom: 40,
     textAlign: 'center',
     fontStyle: 'italic',
+    fontSize: 14, // Adjusted for better fit
   },
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: Colors.cardBackground,
     borderWidth: 1,
-    borderColor: '#ddd',
+    borderColor: '#E0E0E0', // Lighter border
     borderRadius: 12,
     marginBottom: 18,
     paddingHorizontal: 15,
@@ -98,15 +108,14 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   input: {
+    ...Typography.bodyText,
     flex: 1,
-    height: 55, // Increased height
-    fontSize: 16,
-    color: '#333',
+    height: 55,
   },
   button: {
     width: '100%',
-    height: 55, // Increased height
-    backgroundColor: '#004AAD',
+    height: 55,
+    backgroundColor: Colors.primary,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 12,
@@ -117,14 +126,16 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 3,
   },
+  buttonDisabled: {
+    backgroundColor: Colors.textMuted,
+  },
   buttonText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: 'bold',
+    ...Typography.buttonText,
   },
   linkText: {
-    color: '#004AAD',
-    fontSize: 16,
+    ...Typography.bodyText,
+    color: Colors.primary,
+    fontSize: 15, // Adjusted
   },
   linkTextBold: {
     fontWeight: 'bold',

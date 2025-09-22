@@ -1761,6 +1761,36 @@
   </style>
   </style>
 </head>
+  <style>
+    /* Glassmorphism override for Stay in the know */
+    .newsletter.glass-news {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 18px;
+      box-shadow: 0 18px 50px rgba(0,0,0,.45);
+      backdrop-filter: saturate(140%) blur(16px);
+      -webkit-backdrop-filter: saturate(140%) blur(16px);
+    }
+    .newsletter.glass-news h3 { letter-spacing: 1.2px; }
+    .newsletter.glass-news .newsletter-input {
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.35);
+      color: #fff;
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .newsletter.glass-news .newsletter-input::placeholder { color: rgba(255,255,255,.75); }
+    .newsletter.glass-news .newsletter-button {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      border: 0; color: #fff; border-radius: 12px;
+      box-shadow: 0 12px 28px rgba(118,75,162,.45);
+    }
+    .newsletter.glass-news .newsletter-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 44px rgba(118,75,162,.55);
+    }
+  </style>
 </head>
 <body>
 <body>
@@ -1864,8 +1894,8 @@
 
     <!-- Newsletter Signup -->
     <!-- Newsletter Signup -->
-    <div class="newsletter">
-    <div class="newsletter">
+    <div class="newsletter glass-news">
+    <div class="newsletter glass-news">
       <h3>STAY IN THE KNOW</h3>
       <h3>STAY IN THE KNOW</h3>
       <p>Get early access and exclusive updates when we launch!</p>

@@ -1,1132 +1,2269 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
 <html lang="en">
 <head>
+<head>
+  <meta charset="UTF-8">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SendNReceive - Coming Soon | Your Global Financial Inclusion Platform</title>
   <title>SendNReceive - Coming Soon | Your Global Financial Inclusion Platform</title>
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Expires" content="0">
+  <meta name="description" content="SendNReceive is coming soon. Empowering underbanked communities with global payment infrastructure and currency hedging.">
   <meta name="description" content="SendNReceive is coming soon. Empowering underbanked communities with global payment infrastructure and currency hedging.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"></noscript>
   <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"></noscript>
 
+
+  <style>
   <style>
     * {
+    * {
+      margin: 0;
       margin: 0;
       padding: 0;
+      padding: 0;
+      box-sizing: border-box;
       box-sizing: border-box;
     }
+    }
+
 
     body {
+    body {
+      font-family: 'Inter', sans-serif;
       font-family: 'Inter', sans-serif;
       background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+      min-height: 100vh;
       min-height: 100vh;
       display: flex;
+      display: flex;
+      align-items: center;
       align-items: center;
       justify-content: center;
+      justify-content: center;
       color: white;
+      color: white;
+      position: relative;
       position: relative;
       overflow-x: hidden;
+      overflow-x: hidden;
     }
+    }
+
 
     /* Floating Background Currencies */
+    /* Floating Background Currencies */
+    .floating-elements {
     .floating-elements {
       position: absolute;
+      position: absolute;
+      top: 0;
       top: 0;
       left: 0;
+      left: 0;
       width: 100%;
+      width: 100%;
+      height: 100%;
       height: 100%;
       pointer-events: none;
+      pointer-events: none;
+      z-index: 1;
       z-index: 1;
       overflow: hidden;
+      overflow: hidden;
     }
+    }
+
 
     .floating-currency {
+    .floating-currency {
+      opacity: 0;
+      opacity: 0;
+      transition: opacity 1.2s ease;
+      transition: opacity 1.2s ease;
+      position: absolute;
       position: absolute;
       font-size: 2rem;
+      font-size: 2rem;
+      font-weight: 700;
       font-weight: 700;
       color: rgba(255, 255, 255, 0.15);
+      color: rgba(255, 255, 255, 0.15);
+      animation: bounceAround 20s linear infinite;
       animation: bounceAround 20s linear infinite;
       will-change: transform;
+      will-change: transform;
     }
+    }
+
 
     .floating-currency:nth-child(1) {
+    .floating-currency:nth-child(1) {
+      font-size: 2.5rem;
       font-size: 2.5rem;
       animation-delay: 0s;
+      animation-delay: 0s;
+      animation-duration: 15s;
       animation-duration: 15s;
       animation-name: bounceAround1;
+      animation-name: bounceAround1;
     }
+    }
+
 
     .floating-currency:nth-child(2) {
+    .floating-currency:nth-child(2) {
+      font-size: 2rem;
       font-size: 2rem;
       animation-delay: 3s;
+      animation-delay: 3s;
+      animation-duration: 18s;
       animation-duration: 18s;
       animation-name: bounceAround2;
+      animation-name: bounceAround2;
     }
+    }
+
 
     .floating-currency:nth-child(3) {
+    .floating-currency:nth-child(3) {
+      font-size: 3rem;
       font-size: 3rem;
       animation-delay: 6s;
+      animation-delay: 6s;
+      animation-duration: 20s;
       animation-duration: 20s;
       animation-name: bounceAround3;
+      animation-name: bounceAround3;
     }
+    }
+
 
     .floating-currency:nth-child(4) {
+    .floating-currency:nth-child(4) {
+      font-size: 1.8rem;
       font-size: 1.8rem;
       animation-delay: 9s;
+      animation-delay: 9s;
+      animation-duration: 16s;
       animation-duration: 16s;
       animation-name: bounceAround4;
+      animation-name: bounceAround4;
     }
+    }
+
 
     .floating-currency:nth-child(5) {
+    .floating-currency:nth-child(5) {
+      font-size: 2.2rem;
       font-size: 2.2rem;
       animation-delay: 12s;
+      animation-delay: 12s;
+      animation-duration: 14s;
       animation-duration: 14s;
       animation-name: bounceAround5;
+      animation-name: bounceAround5;
     }
+    }
+
 
     .floating-currency:nth-child(6) {
+    .floating-currency:nth-child(6) {
+      font-size: 2.8rem;
       font-size: 2.8rem;
       animation-delay: 15s;
+      animation-delay: 15s;
+      animation-duration: 17s;
       animation-duration: 17s;
       animation-name: bounceAround6;
+      animation-name: bounceAround6;
     }
+    }
+
 
     @keyframes bounceAround1 {
+    @keyframes bounceAround1 {
+      0% { transform: translate(20px, 20px); }
       0% { transform: translate(20px, 20px); }
       20% { transform: translate(calc(100vw - 100px), 100px); }
+      20% { transform: translate(calc(100vw - 100px), 100px); }
+      40% { transform: translate(300px, calc(100vh - 150px)); }
       40% { transform: translate(300px, calc(100vh - 150px)); }
       60% { transform: translate(150px, 200px); }
+      60% { transform: translate(150px, 200px); }
+      80% { transform: translate(calc(100vw - 200px), 300px); }
       80% { transform: translate(calc(100vw - 200px), 300px); }
       100% { transform: translate(20px, 20px); }
+      100% { transform: translate(20px, 20px); }
     }
+    }
+
 
     @keyframes bounceAround2 {
+    @keyframes bounceAround2 {
+      0% { transform: translate(calc(100vw - 50px), 50px); }
       0% { transform: translate(calc(100vw - 50px), 50px); }
       25% { transform: translate(200px, calc(100vh - 100px)); }
+      25% { transform: translate(200px, calc(100vh - 100px)); }
+      50% { transform: translate(100px, 150px); }
       50% { transform: translate(100px, 150px); }
       75% { transform: translate(calc(100vw - 150px), 250px); }
+      75% { transform: translate(calc(100vw - 150px), 250px); }
+      100% { transform: translate(calc(100vw - 50px), 50px); }
       100% { transform: translate(calc(100vw - 50px), 50px); }
     }
+    }
+
 
     @keyframes bounceAround3 {
+    @keyframes bounceAround3 {
+      0% { transform: translate(100px, calc(100vh - 50px)); }
       0% { transform: translate(100px, calc(100vh - 50px)); }
       33% { transform: translate(calc(100vw - 200px), 100px); }
+      33% { transform: translate(calc(100vw - 200px), 100px); }
+      66% { transform: translate(250px, 300px); }
       66% { transform: translate(250px, 300px); }
       100% { transform: translate(100px, calc(100vh - 50px)); }
+      100% { transform: translate(100px, calc(100vh - 50px)); }
     }
+    }
+
 
     @keyframes bounceAround4 {
+    @keyframes bounceAround4 {
+      0% { transform: translate(calc(100vw - 100px), calc(100vh - 100px)); }
       0% { transform: translate(calc(100vw - 100px), calc(100vh - 100px)); }
       30% { transform: translate(150px, 100px); }
+      30% { transform: translate(150px, 100px); }
+      60% { transform: translate(calc(100vw - 250px), 200px); }
       60% { transform: translate(calc(100vw - 250px), 200px); }
       100% { transform: translate(calc(100vw - 100px), calc(100vh - 100px)); }
+      100% { transform: translate(calc(100vw - 100px), calc(100vh - 100px)); }
     }
+    }
+
 
     @keyframes bounceAround5 {
+    @keyframes bounceAround5 {
+      0% { transform: translate(50px, 300px); }
       0% { transform: translate(50px, 300px); }
       40% { transform: translate(calc(100vw - 150px), 50px); }
+      40% { transform: translate(calc(100vw - 150px), 50px); }
+      80% { transform: translate(200px, calc(100vh - 200px)); }
       80% { transform: translate(200px, calc(100vh - 200px)); }
       100% { transform: translate(50px, 300px); }
+      100% { transform: translate(50px, 300px); }
     }
+    }
+
 
     @keyframes bounceAround6 {
+    @keyframes bounceAround6 {
+      0% { transform: translate(calc(100vw - 200px), 200px); }
       0% { transform: translate(calc(100vw - 200px), 200px); }
       50% { transform: translate(100px, calc(100vh - 100px)); }
+      50% { transform: translate(100px, calc(100vh - 100px)); }
+      100% { transform: translate(calc(100vw - 200px), 200px); }
       100% { transform: translate(calc(100vw - 200px), 200px); }
     }
+    }
+
 
     /* Main Container */
+    /* Main Container */
+    .construction-container {
     .construction-container {
       max-width: 600px;
+      max-width: 600px;
+      width: 90%;
       width: 90%;
       text-align: center;
+      text-align: center;
       position: relative;
+      position: relative;
+      z-index: 2;
       z-index: 2;
       padding: 40px 20px;
+      padding: 40px 20px;
     }
+    }
+
 
     /* Logo */
+    /* Logo */
+    .logo {
     .logo {
       width: 100px;
+      width: 100px;
+      height: 100px;
       height: 100px;
       margin: 0 auto 30px;
+      margin: 0 auto 30px;
+      background: rgba(255, 255, 255, 0.1);
       background: rgba(255, 255, 255, 0.1);
       border-radius: 50%;
+      border-radius: 50%;
+      display: flex;
       display: flex;
       align-items: center;
+      align-items: center;
+      justify-content: center;
       justify-content: center;
       backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       border: 1px solid rgba(255, 255, 255, 0.2);
     }
+    }
+
 
     .logo svg {
+    .logo svg {
+      width: 50px;
       width: 50px;
       height: 50px;
+      height: 50px;
+      color: white;
       color: white;
     }
+    }
+
 
     /* Typography */
+    /* Typography */
+    h1 {
     h1 {
       font-size: 3rem;
+      font-size: 3rem;
+      font-weight: 800;
       font-weight: 800;
       margin-bottom: 20px;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
       background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
       -webkit-background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      background-clip: text;
     }
+    }
+
 
     .subtitle {
+    .subtitle {
+      font-size: 1.25rem;
       font-size: 1.25rem;
       font-weight: 600;
+      font-weight: 600;
+      margin-bottom: 15px;
       margin-bottom: 15px;
       opacity: 0.9;
+      opacity: 0.9;
     }
+    }
+
 
     .description {
+    .description {
+      font-size: 1rem;
       font-size: 1rem;
       margin-bottom: 40px;
+      margin-bottom: 40px;
+      opacity: 0.8;
       opacity: 0.8;
       line-height: 1.6;
+      line-height: 1.6;
     }
+    }
+
 
     /* Stepped Progress Bar */
+    /* Stepped Progress Bar */
+    .progress-container {
     .progress-container {
       margin: 40px auto;
+      margin: 40px auto;
+      max-width: 500px;
       max-width: 500px;
     }
+    }
+
 
     .stepped-progress {
+    .stepped-progress {
       display: flex;
+      display: flex;
+      align-items: center;
       align-items: center;
       justify-content: space-between;
+      justify-content: space-between;
+      margin-bottom: 20px;
       margin-bottom: 20px;
       position: relative;
+      position: relative;
     }
+    }
+
 
     .step {
+    .step {
+      display: flex;
       display: flex;
       flex-direction: column;
+      flex-direction: column;
+      align-items: center;
       align-items: center;
       position: relative;
+      position: relative;
+      flex: 1;
       flex: 1;
       z-index: 2;
+      z-index: 2;
     }
+    }
+
 
     .step-circle {
+    .step-circle {
+      width: 30px;
       width: 30px;
       height: 30px;
+      height: 30px;
+      border-radius: 50%;
       border-radius: 50%;
       display: flex;
+      display: flex;
       align-items: center;
+      align-items: center;
+      justify-content: center;
       justify-content: center;
       font-size: 14px;
+      font-size: 14px;
+      font-weight: 700;
       font-weight: 700;
       margin-bottom: 10px;
+      margin-bottom: 10px;
+      position: relative;
       position: relative;
       z-index: 2;
+      z-index: 2;
     }
+    }
+
 
     .step-completed {
+    .step-completed {
+      background: rgba(255, 255, 255, 0.9);
       background: rgba(255, 255, 255, 0.9);
       color: #667eea;
+      color: #667eea;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
       box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
     }
+    }
+
 
     .step-current {
+    .step-current {
+      background: rgba(255, 255, 255, 0.7);
       background: rgba(255, 255, 255, 0.7);
       color: white;
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.9);
       border: 2px solid rgba(255, 255, 255, 0.9);
       animation: stepPulse 2s ease-in-out infinite;
+      animation: stepPulse 2s ease-in-out infinite;
     }
+    }
+
 
     .step-pending {
+    .step-pending {
+      background: rgba(255, 255, 255, 0.2);
       background: rgba(255, 255, 255, 0.2);
       color: rgba(255, 255, 255, 0.5);
+      color: rgba(255, 255, 255, 0.5);
+      border: 2px solid rgba(255, 255, 255, 0.3);
       border: 2px solid rgba(255, 255, 255, 0.3);
     }
+    }
+
 
     .step-label {
+    .step-label {
+      font-size: 12px;
       font-size: 12px;
       color: rgba(255, 255, 255, 0.8);
+      color: rgba(255, 255, 255, 0.8);
+      text-align: center;
       text-align: center;
       font-weight: 500;
+      font-weight: 500;
     }
+    }
+
 
     @keyframes stepPulse {
+    @keyframes stepPulse {
+      0%, 100% { transform: scale(1); }
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.1); }
+      50% { transform: scale(1.1); }
     }
+    }
+
 
     @keyframes globeFloat {
+    @keyframes globeFloat {
+      0%, 100% { transform: translateY(0px); }
       0%, 100% { transform: translateY(0px); }
       50% { transform: translateY(-3px); }
+      50% { transform: translateY(-3px); }
     }
+    }
+
 
     .globe-icon {
+    .globe-icon {
+      width: 20px;
       width: 20px;
       height: 20px;
+      height: 20px;
+      animation: globeFloat 3s ease-in-out infinite;
       animation: globeFloat 3s ease-in-out infinite;
     }
+    }
+
 
     .progress-text {
+    .progress-text {
+      color: rgba(255, 255, 255, 0.8);
       color: rgba(255, 255, 255, 0.8);
       font-size: 16px;
+      font-size: 16px;
+      font-weight: 500;
       font-weight: 500;
       text-align: center;
+      text-align: center;
     }
+    }
+
 
     /* Newsletter Section */
+    /* Newsletter Section */
+    .newsletter {
     .newsletter {
       background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
       backdrop-filter: blur(20px);
       border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
       border-radius: 20px;
       padding: 30px;
+      padding: 30px;
+      margin: 40px 0;
       margin: 40px 0;
     }
+    }
+
 
     .newsletter h3 {
+    .newsletter h3 {
       font-size: 1.5rem;
+      font-size: 1.5rem;
+      font-weight: 700;
       font-weight: 700;
       margin-bottom: 15px;
+      margin-bottom: 15px;
     }
+    }
+
 
     .newsletter p {
+    .newsletter p {
+      font-size: 1rem;
       font-size: 1rem;
       margin-bottom: 25px;
+      margin-bottom: 25px;
+      opacity: 0.9;
       opacity: 0.9;
     }
+    }
+
 
     .newsletter-form {
+    .newsletter-form {
+      display: flex;
       display: flex;
       gap: 15px;
+      gap: 15px;
+      align-items: center;
       align-items: center;
     }
+    }
+
 
     .newsletter-input {
+    .newsletter-input {
+      flex: 1;
       flex: 1;
       padding: 15px 20px;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-      font-size: 1rem;
-      backdrop-filter: blur(10px);
-    }
-
-    .newsletter-input::placeholder {
-      color: rgba(255, 255, 255, 0.6);
-    }
-
-    .newsletter-input:focus {
-      outline: none;
-      border-color: rgba(255, 255, 255, 0.5);
-      background: rgba(255, 255, 255, 0.15);
-    }
-
-    .newsletter-button {
-      padding: 15px 30px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15));
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 12px;
-      color: white;
-      font-weight: 700;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      white-space: nowrap;
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-
-    .newsletter-button:hover {
-      transform: translateY(-2px);
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.25));
-      border-color: rgba(255, 255, 255, 0.5);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.3);
-    }
-
-    .newsletter-button:active {
-      transform: translateY(0);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    }
-
-    /* Social Media Links */
-    .social-media-group {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      justify-content: center;
-      margin: 30px 0;
-    }
-
-    .social-link-compact {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 32px;
-      height: 32px;
-      background: transparent;
-      color: rgba(255, 255, 255, 0.8);
-      border: none;
-      transition: all 0.3s ease;
-      text-decoration: none;
-    }
-
-    .social-link-compact:hover {
-      background: transparent;
-      transform: translateY(-2px);
-    }
-
-    .social-link-compact svg {
-      width: 24px;
-      height: 24px;
-      transition: all 0.3s ease;
-    }
-
-    .social-link-compact.linkedin:hover svg {
-      color: #0077b5;
-    }
-
-    .social-link-compact.facebook:hover svg {
-      color: #1877f2;
-    }
-
-    .social-link-compact.x:hover svg {
-      color: #000000;
-    }
-
-    .social-link-compact.instagram:hover svg {
-      color: #e4405f;
-    }
-
-    .social-link-compact.tiktok:hover svg {
-      color: #000000;
-    }
-
-    .social-link-compact.youtube:hover svg {
-      color: #ff0000;
-    }
-
-    /* Footer */
-    .footer {
-      margin-top: 40px;
-      text-align: center;
-    }
-
-    .footer p {
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 0.9rem;
-    }
-
-    /* Password Modal */
-    .password-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 10000;
-      backdrop-filter: blur(10px);
-    }
-
-    .password-modal.hidden {
-      display: none;
-    }
-
-    .password-container {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 20px;
-      padding: 40px;
-      text-align: center;
-      max-width: 400px;
-      width: 90%;
-      color: white;
-    }
-
-    .password-container h3 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
-
-    .password-container p {
-      font-size: 1rem;
-      margin-bottom: 25px;
-      opacity: 0.9;
-    }
-
-    .password-form {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .password-input {
       padding: 15px 20px;
       border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-      font-size: 1rem;
-      backdrop-filter: blur(10px);
-    }
-
-    .password-input::placeholder {
-      color: rgba(255, 255, 255, 0.6);
-    }
-
-    .password-input:focus {
-      outline: none;
-      border-color: rgba(255, 255, 255, 0.5);
-      background: rgba(255, 255, 255, 0.15);
-    }
-
-    .password-button {
-      padding: 15px 30px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15));
       border: 1px solid rgba(255, 255, 255, 0.3);
       border-radius: 12px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      color: white;
+      font-size: 1rem;
+      font-size: 1rem;
+      backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+    }
+
+
+    .newsletter-input::placeholder {
+    .newsletter-input::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+      color: rgba(255, 255, 255, 0.6);
+    }
+    }
+
+
+    .newsletter-input:focus {
+    .newsletter-input:focus {
+      outline: none;
+      outline: none;
+      border-color: rgba(255, 255, 255, 0.5);
+      border-color: rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.15);
+    }
+    }
+
+
+    .newsletter-button {
+    .newsletter-button {
+      padding: 15px 30px;
+      padding: 15px 30px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15));
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15));
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      border-radius: 12px;
+      color: white;
       color: white;
       font-weight: 700;
+      font-weight: 700;
+      font-size: 1rem;
       font-size: 1rem;
       cursor: pointer;
+      cursor: pointer;
       transition: all 0.3s ease;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      white-space: nowrap;
       backdrop-filter: blur(15px);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      letter-spacing: 0.5px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      text-transform: uppercase;
+    }
     }
 
-    .password-button:hover {
+
+    .newsletter-button:hover {
+    .newsletter-button:hover {
+      transform: translateY(-2px);
       transform: translateY(-2px);
       background: linear-gradient(135deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.25));
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.25));
       border-color: rgba(255, 255, 255, 0.5);
+      border-color: rgba(255, 255, 255, 0.5);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
     }
 
-    .password-button:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-      transform: none;
+
+    .newsletter-button:active {
+    .newsletter-button:active {
+      transform: translateY(0);
+      transform: translateY(0);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
     }
 
-    .error-message {
-      color: #ef4444;
-      font-size: 0.9rem;
-      margin-top: 10px;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
 
-    .error-message.show {
-      opacity: 1;
-    }
-
-    .success-message {
-      color: #10b981;
-      font-size: 0.9rem;
-      margin-top: 10px;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .success-message.show {
-      opacity: 1;
-    }
-
-    .close-button {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      background: none;
-      border: none;
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 24px;
-      cursor: pointer;
-      padding: 5px;
-      border-radius: 50%;
-      width: 30px;
-      height: 30px;
+    /* Social Media Links */
+    /* Social Media Links */
+    .social-media-group {
+    .social-media-group {
       display: flex;
+      display: flex;
+      gap: 8px;
+      gap: 8px;
+      align-items: center;
       align-items: center;
       justify-content: center;
+      justify-content: center;
+      margin: 30px 0;
+      margin: 30px 0;
+    }
+    }
+
+
+    .social-link-compact {
+    .social-link-compact {
+      display: flex;
+      display: flex;
+      align-items: center;
+      align-items: center;
+      justify-content: center;
+      justify-content: center;
+      width: 32px;
+      width: 32px;
+      height: 32px;
+      height: 32px;
+      background: transparent;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.8);
+      color: rgba(255, 255, 255, 0.8);
+      border: none;
+      border: none;
+      transition: all 0.3s ease;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      text-decoration: none;
+    }
+    }
+
+
+    .social-link-compact:hover {
+    .social-link-compact:hover {
+      background: transparent;
+      background: transparent;
+      transform: translateY(-2px);
+      transform: translateY(-2px);
+    }
+    }
+
+
+    .social-link-compact svg {
+    .social-link-compact svg {
+      width: 24px;
+      width: 24px;
+      height: 24px;
+      height: 24px;
+      transition: all 0.3s ease;
       transition: all 0.3s ease;
     }
+    }
+
+
+    .social-link-compact.linkedin:hover svg {
+    .social-link-compact.linkedin:hover svg {
+      color: #0077b5;
+      color: #0077b5;
+    }
+    }
+
+
+    .social-link-compact.facebook:hover svg {
+    .social-link-compact.facebook:hover svg {
+      color: #1877f2;
+      color: #1877f2;
+    }
+    }
+
+
+    .social-link-compact.x:hover svg {
+    .social-link-compact.x:hover svg {
+      color: #000000;
+      color: #000000;
+    }
+    }
+
+
+    .social-link-compact.instagram:hover svg {
+    .social-link-compact.instagram:hover svg {
+      color: #e4405f;
+      color: #e4405f;
+    }
+    }
+
+
+    .social-link-compact.tiktok:hover svg {
+    .social-link-compact.tiktok:hover svg {
+      color: #000000;
+      color: #000000;
+    }
+    }
+
+
+    .social-link-compact.youtube:hover svg {
+    .social-link-compact.youtube:hover svg {
+      color: #ff0000;
+      color: #ff0000;
+    }
+    }
+
+
+    /* Footer */
+    /* Footer */
+    .footer {
+    .footer {
+      margin-top: 40px;
+      margin-top: 40px;
+      text-align: center;
+      text-align: center;
+    }
+    }
+
+
+    .footer p {
+    .footer p {
+      color: rgba(255, 255, 255, 0.7);
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+      font-size: 0.9rem;
+    }
+    }
+
+
+    /* Password Modal */
+    /* Password Modal */
+    .password-modal {
+    .password-modal {
+      position: fixed;
+      position: fixed;
+      top: 0;
+      top: 0;
+      left: 0;
+      left: 0;
+      width: 100%;
+      width: 100%;
+      height: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      display: flex;
+      align-items: center;
+      align-items: center;
+      justify-content: center;
+      justify-content: center;
+      z-index: 10000;
+      z-index: 10000;
+      backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+    }
+
+
+    .password-modal.hidden {
+    .password-modal.hidden {
+      display: none;
+      display: none;
+    }
+    }
+
+
+    .password-container {
+    .password-container {
+      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      border-radius: 20px;
+      padding: 40px;
+      padding: 40px;
+      text-align: center;
+      text-align: center;
+      max-width: 400px;
+      max-width: 400px;
+      width: 90%;
+      width: 90%;
+      color: white;
+      color: white;
+    }
+    }
+
+
+    .password-container h3 {
+    .password-container h3 {
+      font-size: 1.5rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      font-weight: 700;
+      margin-bottom: 20px;
+      margin-bottom: 20px;
+    }
+    }
+
+
+    .password-container p {
+    .password-container p {
+      font-size: 1rem;
+      font-size: 1rem;
+      margin-bottom: 25px;
+      margin-bottom: 25px;
+      opacity: 0.9;
+      opacity: 0.9;
+    }
+    }
+
+
+    .password-form {
+    .password-form {
+      display: flex;
+      display: flex;
+      flex-direction: column;
+      flex-direction: column;
+      gap: 20px;
+      gap: 20px;
+    }
+    }
+
+
+    .password-input {
+    .password-input {
+      padding: 15px 20px;
+      padding: 15px 20px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      color: white;
+      font-size: 1rem;
+      font-size: 1rem;
+      backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+    }
+
+
+    .password-input::placeholder {
+    .password-input::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+      color: rgba(255, 255, 255, 0.6);
+    }
+    }
+
+
+    .password-input:focus {
+    .password-input:focus {
+      outline: none;
+      outline: none;
+      border-color: rgba(255, 255, 255, 0.5);
+      border-color: rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.15);
+    }
+    }
+
+
+    .password-button {
+    .password-button {
+      padding: 15px 30px;
+      padding: 15px 30px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15));
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15));
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      border-radius: 12px;
+      color: white;
+      color: white;
+      font-weight: 700;
+      font-weight: 700;
+      font-size: 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(15px);
+      backdrop-filter: blur(15px);
+    }
+    }
+
+
+    .password-button:hover {
+    .password-button:hover {
+      transform: translateY(-2px);
+      transform: translateY(-2px);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.25));
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.25));
+      border-color: rgba(255, 255, 255, 0.5);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+    }
+
+
+    .password-button:disabled {
+    .password-button:disabled {
+      opacity: 0.6;
+      opacity: 0.6;
+      cursor: not-allowed;
+      cursor: not-allowed;
+      transform: none;
+      transform: none;
+    }
+    }
+
+
+    .error-message {
+    .error-message {
+      color: #ef4444;
+      color: #ef4444;
+      font-size: 0.9rem;
+      font-size: 0.9rem;
+      margin-top: 10px;
+      margin-top: 10px;
+      opacity: 0;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      transition: opacity 0.3s ease;
+    }
+    }
+
+
+    .error-message.show {
+    .error-message.show {
+      opacity: 1;
+      opacity: 1;
+    }
+    }
+
+
+    .success-message {
+    .success-message {
+      color: #10b981;
+      color: #10b981;
+      font-size: 0.9rem;
+      font-size: 0.9rem;
+      margin-top: 10px;
+      margin-top: 10px;
+      opacity: 0;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      transition: opacity 0.3s ease;
+    }
+    }
+
+
+    .success-message.show {
+    .success-message.show {
+      opacity: 1;
+      opacity: 1;
+    }
+    }
+
+
+    .close-button {
+    .close-button {
+      position: absolute;
+      position: absolute;
+      top: 15px;
+      top: 15px;
+      right: 20px;
+      right: 20px;
+      background: none;
+      background: none;
+      border: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.7);
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 24px;
+      font-size: 24px;
+      cursor: pointer;
+      cursor: pointer;
+      padding: 5px;
+      padding: 5px;
+      border-radius: 50%;
+      border-radius: 50%;
+      width: 30px;
+      width: 30px;
+      height: 30px;
+      height: 30px;
+      display: flex;
+      display: flex;
+      align-items: center;
+      align-items: center;
+      justify-content: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      transition: all 0.3s ease;
+    }
+    }
+
 
     .close-button:hover {
+    .close-button:hover {
+      color: rgba(255, 255, 255, 1);
       color: rgba(255, 255, 255, 1);
       background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.1);
     }
+    }
+
 
     /* Mobile Responsiveness for Password Modal */
+    /* Mobile Responsiveness for Password Modal */
     @media (max-width: 768px) {
+    @media (max-width: 768px) {
+      .password-container {
       .password-container {
         padding: 30px 20px;
+        padding: 30px 20px;
+        max-width: 350px;
         max-width: 350px;
       }
+      }
+      
       
       .password-container h3 {
+      .password-container h3 {
+        font-size: 1.3rem;
         font-size: 1.3rem;
       }
+      }
+      
       
       .password-container p {
+      .password-container p {
+        font-size: 0.95rem;
         font-size: 0.95rem;
       }
+      }
+      
       
       .password-input {
+      .password-input {
+        padding: 12px 15px;
         padding: 12px 15px;
         font-size: 0.95rem;
-      }
-      
-      .password-button {
-        padding: 12px 25px;
         font-size: 0.95rem;
       }
+      }
+      
+      
+      .password-button {
+      .password-button {
+        padding: 12px 25px;
+        padding: 12px 25px;
+        font-size: 0.95rem;
+        font-size: 0.95rem;
+      }
+      }
+    }
     }
 
+
+    @media (max-width: 480px) {
     @media (max-width: 480px) {
       .password-container {
+      .password-container {
+        padding: 25px 15px;
         padding: 25px 15px;
         max-width: 300px;
+        max-width: 300px;
+        position: relative;
         position: relative;
       }
+      }
+      
       
       .close-button {
+      .close-button {
+        top: 10px;
         top: 10px;
         right: 15px;
+        right: 15px;
+        font-size: 20px;
         font-size: 20px;
         width: 25px;
+        width: 25px;
+        height: 25px;
         height: 25px;
       }
+      }
+      
       
       .password-container h3 {
+      .password-container h3 {
+        font-size: 1.2rem;
         font-size: 1.2rem;
         margin-bottom: 15px;
+        margin-bottom: 15px;
       }
+      }
+      
       
       .password-container p {
+      .password-container p {
+        font-size: 0.9rem;
         font-size: 0.9rem;
         margin-bottom: 20px;
+        margin-bottom: 20px;
       }
+      }
+      
       
       .password-form {
+      .password-form {
+        gap: 15px;
         gap: 15px;
       }
+      }
+      
       
       .password-input {
+      .password-input {
+        padding: 10px 12px;
         padding: 10px 12px;
         font-size: 0.9rem;
+        font-size: 0.9rem;
       }
+      }
+      
       
       .password-button {
+      .password-button {
+        padding: 10px 20px;
         padding: 10px 20px;
         font-size: 0.9rem;
+        font-size: 0.9rem;
       }
+      }
+      
       
       .error-message,
+      .error-message,
+      .success-message {
       .success-message {
         font-size: 0.8rem;
-      }
-    }
-
-    /* Tablet Responsiveness */
-    @media (max-width: 1024px) and (min-width: 769px) {
-      .construction-container {
-        max-width: 500px;
-        padding: 30px 25px;
-      }
-      
-      h1 {
-        font-size: 2.8rem;
-      }
-      
-      .subtitle {
-        font-size: 1.2rem;
-      }
-      
-      .description {
-        font-size: 1rem;
-      }
-      
-      .newsletter {
-        padding: 30px 25px;
-        margin: 35px 0;
-      }
-      
-      .newsletter h3 {
-        font-size: 1.4rem;
-      }
-      
-      .floating-currency {
-        font-size: 1.8rem;
-      }
-    }
-
-    /* Mobile Responsiveness */
-    @media (max-width: 768px) {
-      .construction-container {
-        padding: 20px 15px;
-        max-width: 100%;
-      }
-      
-      h1 {
-        font-size: 2.5rem;
-        margin-bottom: 15px;
-      }
-      
-      .subtitle {
-        font-size: 1.1rem;
-        margin-bottom: 12px;
-      }
-      
-      .description {
-        font-size: 0.95rem;
-        margin-bottom: 30px;
-      }
-      
-      .newsletter {
-        padding: 25px 20px;
-        margin: 30px 0;
-      }
-      
-      .newsletter h3 {
-        font-size: 1.3rem;
-      }
-      
-      .newsletter-form {
-        flex-direction: column;
-        gap: 15px;
-      }
-      
-      .newsletter-button {
-        width: 100%;
-      }
-      
-      .stepped-progress {
-        gap: 10px;
-      }
-      
-      .step-circle {
-        width: 26px;
-        height: 26px;
-        font-size: 12px;
-      }
-      
-      .step-label {
-        font-size: 10px;
-      }
-      
-      .floating-currency {
-        font-size: 1.5rem;
-      }
-      
-      .social-media-group {
-        margin: 25px 0;
-      }
-      
-      .footer {
-        margin-top: 30px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .construction-container {
-        padding: 15px 10px;
-      }
-      
-      h1 {
-        font-size: 2rem;
-        margin-bottom: 12px;
-      }
-      
-      .subtitle {
-        font-size: 1rem;
-        margin-bottom: 10px;
-      }
-      
-      .description {
-        font-size: 0.9rem;
-        margin-bottom: 25px;
-      }
-      
-      .logo {
-        width: 80px;
-        height: 80px;
-        margin-bottom: 25px;
-      }
-      
-      .logo svg {
-        width: 40px;
-        height: 40px;
-      }
-      
-      .stepped-progress {
-        gap: 5px;
-      }
-      
-      .step-circle {
-        width: 24px;
-        height: 24px;
-        font-size: 11px;
-      }
-      
-      .step-label {
-        font-size: 9px;
-      }
-      
-      .newsletter {
-        padding: 20px 15px;
-        margin: 25px 0;
-      }
-      
-      .newsletter h3 {
-        font-size: 1.2rem;
-      }
-      
-      .newsletter p {
-        font-size: 0.9rem;
-        margin-bottom: 20px;
-      }
-      
-      .newsletter-input {
-        padding: 12px 15px;
-        font-size: 0.95rem;
-      }
-      
-      .newsletter-button {
-        padding: 12px 25px;
-        font-size: 0.95rem;
-      }
-      
-      .floating-currency {
-        font-size: 1.2rem;
-      }
-      
-      .social-media-group {
-        margin: 20px 0;
-      }
-      
-      .social-link-compact {
-        width: 28px;
-        height: 28px;
-      }
-      
-      .social-link-compact svg {
-        width: 20px;
-        height: 20px;
-      }
-      
-      .footer {
-        margin-top: 25px;
-      }
-      
-      .footer p {
         font-size: 0.8rem;
       }
+      }
+    }
     }
 
-    @media (max-width: 360px) {
+
+    /* Tablet Responsiveness */
+    /* Tablet Responsiveness */
+    @media (max-width: 1024px) and (min-width: 769px) {
+    @media (max-width: 1024px) and (min-width: 769px) {
       .construction-container {
-        padding: 10px 8px;
+      .construction-container {
+        max-width: 500px;
+        max-width: 500px;
+        padding: 30px 25px;
+        padding: 30px 25px;
       }
+      }
+      
       
       h1 {
-        font-size: 1.8rem;
+      h1 {
+        font-size: 2.8rem;
+        font-size: 2.8rem;
       }
+      }
+      
       
       .subtitle {
-        font-size: 0.95rem;
+      .subtitle {
+        font-size: 1.2rem;
+        font-size: 1.2rem;
       }
+      }
+      
       
       .description {
-        font-size: 0.85rem;
-      }
-      
-      .logo {
-        width: 70px;
-        height: 70px;
-        margin-bottom: 20px;
-      }
-      
-      .logo svg {
-        width: 35px;
-        height: 35px;
-      }
-      
-      .step-circle {
-        width: 22px;
-        height: 22px;
-        font-size: 10px;
-      }
-      
-      .step-label {
-        font-size: 8px;
-      }
-      
-      .floating-currency {
+      .description {
+        font-size: 1rem;
         font-size: 1rem;
       }
+      }
+      
+      
+      .newsletter {
+      .newsletter {
+        padding: 30px 25px;
+        padding: 30px 25px;
+        margin: 35px 0;
+        margin: 35px 0;
+      }
+      }
+      
+      
+      .newsletter h3 {
+      .newsletter h3 {
+        font-size: 1.4rem;
+        font-size: 1.4rem;
+      }
+      }
+      
+      
+      .floating-currency {
+      .floating-currency {
+        font-size: 1.8rem;
+        font-size: 1.8rem;
+      }
+      }
+    }
+    }
+
+
+    /* Mobile Responsiveness */
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+    @media (max-width: 768px) {
+      .construction-container {
+      .construction-container {
+        padding: 20px 15px;
+        padding: 20px 15px;
+        max-width: 100%;
+        max-width: 100%;
+      }
+      }
+      
+      
+      h1 {
+      h1 {
+        font-size: 2.5rem;
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        margin-bottom: 15px;
+      }
+      }
+      
+      
+      .subtitle {
+      .subtitle {
+        font-size: 1.1rem;
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+        margin-bottom: 12px;
+      }
+      }
+      
+      
+      .description {
+      .description {
+        font-size: 0.95rem;
+        font-size: 0.95rem;
+        margin-bottom: 30px;
+        margin-bottom: 30px;
+      }
+      }
+      
+      
+      .newsletter {
+      .newsletter {
+        padding: 25px 20px;
+        padding: 25px 20px;
+        margin: 30px 0;
+        margin: 30px 0;
+      }
+      }
+      
+      
+      .newsletter h3 {
+      .newsletter h3 {
+        font-size: 1.3rem;
+        font-size: 1.3rem;
+      }
+      }
+      
+      
+      .newsletter-form {
+      .newsletter-form {
+        flex-direction: column;
+        flex-direction: column;
+        gap: 15px;
+        gap: 15px;
+      }
+      }
+      
+      
+      .newsletter-button {
+      .newsletter-button {
+        width: 100%;
+        width: 100%;
+      }
+      }
+      
+      
+      .stepped-progress {
+      .stepped-progress {
+        gap: 10px;
+        gap: 10px;
+      }
+      }
+      
+      
+      .step-circle {
+      .step-circle {
+        width: 26px;
+        width: 26px;
+        height: 26px;
+        height: 26px;
+        font-size: 12px;
+        font-size: 12px;
+      }
+      }
+      
+      
+      .step-label {
+      .step-label {
+        font-size: 10px;
+        font-size: 10px;
+      }
+      }
+      
+      
+      .floating-currency {
+      .floating-currency {
+        font-size: 1.5rem;
+        font-size: 1.5rem;
+      }
+      }
+      
+      
+      .social-media-group {
+      .social-media-group {
+        margin: 25px 0;
+        margin: 25px 0;
+      }
+      }
+      
+      
+      .footer {
+      .footer {
+        margin-top: 30px;
+        margin-top: 30px;
+      }
+      }
+    }
+    }
+
+
+    @media (max-width: 480px) {
+    @media (max-width: 480px) {
+      .construction-container {
+      .construction-container {
+        padding: 15px 10px;
+        padding: 15px 10px;
+      }
+      }
+      
+      
+      h1 {
+      h1 {
+        font-size: 2rem;
+        font-size: 2rem;
+        margin-bottom: 12px;
+        margin-bottom: 12px;
+      }
+      }
+      
+      
+      .subtitle {
+      .subtitle {
+        font-size: 1rem;
+        font-size: 1rem;
+        margin-bottom: 10px;
+        margin-bottom: 10px;
+      }
+      }
+      
+      
+      .description {
+      .description {
+        font-size: 0.9rem;
+        font-size: 0.9rem;
+        margin-bottom: 25px;
+        margin-bottom: 25px;
+      }
+      }
+      
+      
+      .logo {
+      .logo {
+        width: 80px;
+        width: 80px;
+        height: 80px;
+        height: 80px;
+        margin-bottom: 25px;
+        margin-bottom: 25px;
+      }
+      }
+      
+      
+      .logo svg {
+      .logo svg {
+        width: 40px;
+        width: 40px;
+        height: 40px;
+        height: 40px;
+      }
+      }
+      
+      
+      .stepped-progress {
+      .stepped-progress {
+        gap: 5px;
+        gap: 5px;
+      }
+      }
+      
+      
+      .step-circle {
+      .step-circle {
+        width: 24px;
+        width: 24px;
+        height: 24px;
+        height: 24px;
+        font-size: 11px;
+        font-size: 11px;
+      }
+      }
+      
+      
+      .step-label {
+      .step-label {
+        font-size: 9px;
+        font-size: 9px;
+      }
+      }
+      
+      
+      .newsletter {
+      .newsletter {
+        padding: 20px 15px;
+        padding: 20px 15px;
+        margin: 25px 0;
+        margin: 25px 0;
+      }
+      }
+      
+      
+      .newsletter h3 {
+      .newsletter h3 {
+        font-size: 1.2rem;
+        font-size: 1.2rem;
+      }
+      }
+      
+      
+      .newsletter p {
+      .newsletter p {
+        font-size: 0.9rem;
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+        margin-bottom: 20px;
+      }
+      }
+      
+      
+      .newsletter-input {
+      .newsletter-input {
+        padding: 12px 15px;
+        padding: 12px 15px;
+        font-size: 0.95rem;
+        font-size: 0.95rem;
+      }
+      }
+      
+      
+      .newsletter-button {
+      .newsletter-button {
+        padding: 12px 25px;
+        padding: 12px 25px;
+        font-size: 0.95rem;
+        font-size: 0.95rem;
+      }
+      }
+      
+      
+      .floating-currency {
+      .floating-currency {
+        font-size: 1.2rem;
+        font-size: 1.2rem;
+      }
+      }
+      
+      
+      .social-media-group {
+      .social-media-group {
+        margin: 20px 0;
+        margin: 20px 0;
+      }
+      }
+      
+      
+      .social-link-compact {
+      .social-link-compact {
+        width: 28px;
+        width: 28px;
+        height: 28px;
+        height: 28px;
+      }
+      }
+      
+      
+      .social-link-compact svg {
+      .social-link-compact svg {
+        width: 20px;
+        width: 20px;
+        height: 20px;
+        height: 20px;
+      }
+      }
+      
+      
+      .footer {
+      .footer {
+        margin-top: 25px;
+        margin-top: 25px;
+      }
+      }
+      
+      
+      .footer p {
+      .footer p {
+        font-size: 0.8rem;
+        font-size: 0.8rem;
+      }
+      }
+    }
+    }
+
+
+    @media (max-width: 360px) {
+    @media (max-width: 360px) {
+      .construction-container {
+      .construction-container {
+        padding: 10px 8px;
+        padding: 10px 8px;
+      }
+      }
+      
+      
+      h1 {
+      h1 {
+        font-size: 1.8rem;
+        font-size: 1.8rem;
+      }
+      }
+      
+      
+      .subtitle {
+      .subtitle {
+        font-size: 0.95rem;
+        font-size: 0.95rem;
+      }
+      }
+      
+      
+      .description {
+      .description {
+        font-size: 0.85rem;
+        font-size: 0.85rem;
+      }
+      }
+      
+      
+      .logo {
+      .logo {
+        width: 70px;
+        width: 70px;
+        height: 70px;
+        height: 70px;
+        margin-bottom: 20px;
+        margin-bottom: 20px;
+      }
+      }
+      
+      
+      .logo svg {
+      .logo svg {
+        width: 35px;
+        width: 35px;
+        height: 35px;
+        height: 35px;
+      }
+      }
+      
+      
+      .step-circle {
+      .step-circle {
+        width: 22px;
+        width: 22px;
+        height: 22px;
+        height: 22px;
+        font-size: 10px;
+        font-size: 10px;
+      }
+      }
+      
+      
+      .step-label {
+      .step-label {
+        font-size: 8px;
+        font-size: 8px;
+      }
+      }
+      
+      
+      .floating-currency {
+      .floating-currency {
+        font-size: 1rem;
+        font-size: 1rem;
+      }
+      }
+    }
     }
   </style>
+  </style>
+</head>
 </head>
 <body>
+<body>
+  <!-- Floating Background Currencies -->
   <!-- Floating Background Currencies -->
   <div class="floating-elements">
+  <div class="floating-elements">
+    <div class="floating-currency">$</div>
     <div class="floating-currency">$</div>
     <div class="floating-currency">€</div>
+    <div class="floating-currency">€</div>
+    <div class="floating-currency">£</div>
     <div class="floating-currency">£</div>
     <div class="floating-currency">¥</div>
+    <div class="floating-currency">¥</div>
+    <div class="floating-currency">GH₵</div>
     <div class="floating-currency">GH₵</div>
   </div>
+  </div>
+
 
   <div class="construction-container">
+  <div class="construction-container">
+    <!-- Logo -->
     <!-- Logo -->
     <div class="logo">
+    <div class="logo">
+      <svg class="globe-icon" viewBox="0 0 24 24" fill="currentColor">
       <svg class="globe-icon" viewBox="0 0 24 24" fill="currentColor">
         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+      </svg>
       </svg>
     </div>
+    </div>
+
 
     <!-- Main Content -->
+    <!-- Main Content -->
+    <h1 id="typewriter-title">Coming Soon</h1>
     <h1 id="typewriter-title">Coming Soon</h1>
     <p class="subtitle" id="typewriter-subtitle">SendNReceive is building the future of global financial inclusion.</p>
+    <p class="subtitle" id="typewriter-subtitle">SendNReceive is building the future of global financial inclusion.</p>
+    <p class="description" id="typewriter-description">We're working hard to bring you instant and secure transfers globally.</p>
     <p class="description" id="typewriter-description">We're working hard to bring you instant and secure transfers globally.</p>
 
+
+    <!-- Stepped Progress Bar -->
     <!-- Stepped Progress Bar -->
     <div class="progress-container">
+    <div class="progress-container">
+      <div class="stepped-progress">
       <div class="stepped-progress">
         <div class="step">
+        <div class="step">
+          <div class="step-circle step-completed">✓</div>
           <div class="step-circle step-completed">✓</div>
           <div class="step-label">Design</div>
+          <div class="step-label">Design</div>
+        </div>
         </div>
         <div class="step">
+        <div class="step">
+          <div class="step-circle step-completed">✓</div>
           <div class="step-circle step-completed">✓</div>
           <div class="step-label">Frontend</div>
+          <div class="step-label">Frontend</div>
         </div>
+        </div>
+        <div class="step">
         <div class="step">
           <div class="step-circle step-completed">✓</div>
+          <div class="step-circle step-completed">✓</div>
+          <div class="step-label">Backend</div>
           <div class="step-label">Backend</div>
         </div>
+        </div>
+        <div class="step">
         <div class="step">
           <div class="step-circle step-current">4</div>
+          <div class="step-circle step-current">4</div>
+          <div class="step-label">Testing</div>
           <div class="step-label">Testing</div>
         </div>
+        </div>
+        <div class="step">
         <div class="step">
           <div class="step-circle step-pending">5</div>
+          <div class="step-circle step-pending">5</div>
+          <div class="step-label">Launch</div>
           <div class="step-label">Launch</div>
         </div>
+        </div>
+      </div>
       </div>
 
+
     </div>
+    </div>
+
 
     <!-- Newsletter Signup -->
+    <!-- Newsletter Signup -->
+    <div class="newsletter">
     <div class="newsletter">
       <h3>STAY IN THE KNOW</h3>
+      <h3>STAY IN THE KNOW</h3>
+      <p>Get early access and exclusive updates when we launch!</p>
       <p>Get early access and exclusive updates when we launch!</p>
       <form class="newsletter-form" onsubmit="handleNewsletterSignup(event)">
+      <form class="newsletter-form" onsubmit="handleNewsletterSignup(event)">
+        <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
         <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
         <button type="submit" class="newsletter-button">NOTIFY ME</button>
+        <button type="submit" class="newsletter-button">NOTIFY ME</button>
+      </form>
       </form>
     </div>
+    </div>
+
 
     <!-- Social Media Links -->
+    <!-- Social Media Links -->
+    <div class="social-media-group">
     <div class="social-media-group">
       <a href="#" aria-label="LinkedIn" class="social-link-compact linkedin">
+      <a href="#" aria-label="LinkedIn" class="social-link-compact linkedin">
+        <svg viewBox="0 0 24 24" fill="currentColor">
         <svg viewBox="0 0 24 24" fill="currentColor">
           <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
         </svg>
+        </svg>
+      </a>
       </a>
       <a href="#" aria-label="Facebook" class="social-link-compact facebook">
+      <a href="#" aria-label="Facebook" class="social-link-compact facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor">
         <svg viewBox="0 0 24 24" fill="currentColor">
           <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
         </svg>
+        </svg>
+      </a>
       </a>
       <a href="#" aria-label="X" class="social-link-compact x">
+      <a href="#" aria-label="X" class="social-link-compact x">
+        <svg viewBox="0 0 24 24" fill="currentColor">
         <svg viewBox="0 0 24 24" fill="currentColor">
           <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
         </svg>
+        </svg>
+      </a>
       </a>
       <a href="#" aria-label="Instagram" class="social-link-compact instagram">
+      <a href="#" aria-label="Instagram" class="social-link-compact instagram">
+        <svg viewBox="0 0 24 24" fill="currentColor">
         <svg viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
         </svg>
+        </svg>
+      </a>
       </a>
       <a href="#" aria-label="TikTok" class="social-link-compact tiktok">
+      <a href="#" aria-label="TikTok" class="social-link-compact tiktok">
+        <svg viewBox="0 0 24 24" fill="currentColor">
         <svg viewBox="0 0 24 24" fill="currentColor">
           <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+          <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
         </svg>
+        </svg>
+      </a>
       </a>
       <a href="#" aria-label="YouTube" class="social-link-compact youtube">
+      <a href="#" aria-label="YouTube" class="social-link-compact youtube">
+        <svg viewBox="0 0 24 24" fill="currentColor">
         <svg viewBox="0 0 24 24" fill="currentColor">
           <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+        </svg>
         </svg>
       </a>
+      </a>
     </div>
+    </div>
+
 
     <!-- Footer -->
+    <!-- Footer -->
+    <div class="footer">
     <div class="footer">
       <p>&copy; 2026 SendNReceive. All rights reserved.</p>
+      <p>&copy; 2026 SendNReceive. All rights reserved.</p>
+    </div>
     </div>
   </div>
+  </div>
+
 
   <!-- Password Modal -->
+  <!-- Password Modal -->
+  <div class="password-modal hidden" id="passwordModal">
   <div class="password-modal hidden" id="passwordModal">
     <div class="password-container">
+    <div class="password-container">
+      <button class="close-button" onclick="closeModal()">&times;</button>
       <button class="close-button" onclick="closeModal()">&times;</button>
       <h3>🔐 Developer Access</h3>
+      <h3>🔐 Developer Access</h3>
+      <p>Enter the password to access the website</p>
       <p>Enter the password to access the website</p>
       <form class="password-form" id="passwordForm">
+      <form class="password-form" id="passwordForm">
+        <input 
         <input 
           type="password" 
+          type="password" 
+          class="password-input" 
           class="password-input" 
           id="passwordInput"
+          id="passwordInput"
+          placeholder="Enter password" 
           placeholder="Enter password" 
           required
+          required
+        >
         >
         <button type="submit" class="password-button" id="passwordButton">
+        <button type="submit" class="password-button" id="passwordButton">
+          Access Website
           Access Website
         </button>
+        </button>
+        <div class="error-message" id="errorMessage">
         <div class="error-message" id="errorMessage">
           Incorrect password. Please try again.
+          Incorrect password. Please try again.
+        </div>
         </div>
         <div class="success-message" id="successMessage">
+        <div class="success-message" id="successMessage">
+          Access granted! Redirecting...
           Access granted! Redirecting...
         </div>
+        </div>
+      </form>
       </form>
     </div>
+    </div>
+  </div>
   </div>
 
+
+  <script src="construction-bypass.js"></script>
   <script src="construction-bypass.js"></script>
   <script>
+  <script>
+    // Newsletter signup handler
     // Newsletter signup handler
     function handleNewsletterSignup(event) {
+    function handleNewsletterSignup(event) {
+      event.preventDefault();
       event.preventDefault();
       const email = event.target.querySelector('input[type="email"]').value;
+      const email = event.target.querySelector('input[type="email"]').value;
+      
       
       // Show success message
+      // Show success message
+      const button = event.target.querySelector('button');
       const button = event.target.querySelector('button');
       const originalText = button.textContent;
+      const originalText = button.textContent;
+      button.textContent = 'Thank you!';
       button.textContent = 'Thank you!';
       button.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+      button.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+      
       
       // Reset after 3 seconds
+      // Reset after 3 seconds
+      setTimeout(() => {
       setTimeout(() => {
         button.textContent = originalText;
+        button.textContent = originalText;
+        event.target.reset();
         event.target.reset();
       }, 3000);
+      }, 3000);
+      
       
       // Here you would typically send the email to your backend
+      // Here you would typically send the email to your backend
+      console.log('Newsletter signup:', email);
       console.log('Newsletter signup:', email);
     }
+    }
+
 
     // Custom Typewriter Effect
+    // Custom Typewriter Effect
+    function typeWriter(element, text, speed = 50, callback = null) {
     function typeWriter(element, text, speed = 50, callback = null) {
       let i = 0;
+      let i = 0;
+      element.innerHTML = '';
       element.innerHTML = '';
       
+      
+      function type() {
       function type() {
         if (i < text.length) {
+        if (i < text.length) {
+          element.innerHTML += text.charAt(i);
           element.innerHTML += text.charAt(i);
           i++;
+          i++;
+          setTimeout(type, speed);
           setTimeout(type, speed);
         } else {
+        } else {
+          if (callback) callback();
           if (callback) callback();
         }
+        }
       }
+      }
+      
       
       type();
+      type();
     }
+    }
+    
     
     function initializeTypewriter() {
+    function initializeTypewriter() {
+      const title = document.getElementById('typewriter-title');
       const title = document.getElementById('typewriter-title');
       const subtitle = document.getElementById('typewriter-subtitle');
+      const subtitle = document.getElementById('typewriter-subtitle');
+      const description = document.getElementById('typewriter-description');
       const description = document.getElementById('typewriter-description');
       
+      
+      // Clear text initially
       // Clear text initially
       title.textContent = '';
+      title.textContent = '';
+      subtitle.textContent = '';
       subtitle.textContent = '';
       description.textContent = '';
+      description.textContent = '';
+      
       
       // Start with subtitle (skip title)
+      // Start with subtitle (skip title)
+      typeWriter(subtitle, 'SendNReceive is building the future of global financial inclusion.', 50, () => {
       typeWriter(subtitle, 'SendNReceive is building the future of global financial inclusion.', 50, () => {
         // After subtitle completes, start description
+        // After subtitle completes, start description
+        setTimeout(() => {
         setTimeout(() => {
           typeWriter(description, 'We\'re working hard to bring you instant and secure transfers globally.', 40);
+          typeWriter(description, 'We\'re working hard to bring you instant and secure transfers globally.', 40);
+        }, 500);
         }, 500);
       });
+      });
+    }
     }
     
+    
+    // Initialize typewriter when page loads
     // Initialize typewriter when page loads
     document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(initializeTypewriter, 1000);
       setTimeout(initializeTypewriter, 1000);
     });
+    });
+
 
     // Performance optimization: Pause animations when tab is not visible
+    // Performance optimization: Pause animations when tab is not visible
+    document.addEventListener('visibilitychange', function() {
     document.addEventListener('visibilitychange', function() {
       const floatingCurrencies = document.querySelectorAll('.floating-currency');
+      const floatingCurrencies = document.querySelectorAll('.floating-currency');
+      const globeIcon = document.querySelector('.globe-icon');
       const globeIcon = document.querySelector('.globe-icon');
       
+      
+      if (document.hidden) {
       if (document.hidden) {
         // Pause animations when tab is not visible
+        // Pause animations when tab is not visible
+        floatingCurrencies.forEach(currency => {
         floatingCurrencies.forEach(currency => {
           currency.style.animationPlayState = 'paused';
+          currency.style.animationPlayState = 'paused';
         });
+        });
+        if (globeIcon) {
         if (globeIcon) {
           globeIcon.style.animationPlayState = 'paused';
+          globeIcon.style.animationPlayState = 'paused';
+        }
         }
       } else {
+      } else {
+        // Resume animations when tab becomes visible
         // Resume animations when tab becomes visible
         floatingCurrencies.forEach(currency => {
+        floatingCurrencies.forEach(currency => {
+          currency.style.animationPlayState = 'running';
           currency.style.animationPlayState = 'running';
         });
+        });
+        if (globeIcon) {
         if (globeIcon) {
           globeIcon.style.animationPlayState = 'running';
+          globeIcon.style.animationPlayState = 'running';
+        }
         }
       }
+      }
     });
+    });
+  </script>
   </script>
 </body>
+<script></script>
+</body>
+  <script>
   <script>
     (function(){
+    (function(){
+      const items = document.querySelectorAll(".floating-currency");
       const items = document.querySelectorAll(".floating-currency");
       if (!items.length || !( in window)) return;
+      if (!items.length || !( in window)) return;
+      const ob = new IntersectionObserver((entries) => {
       const ob = new IntersectionObserver((entries) => {
         entries.forEach(e => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
           if (e.isIntersecting) {
             const el = e.target;
+            const el = e.target;
+            el.style.animationPlayState = "running";
             el.style.animationPlayState = "running";
             el.style.animationDelay = "0s";
+            el.style.animationDelay = "0s";
+            ob.unobserve(el);
             ob.unobserve(el);
           }
+          }
+        });
         });
       }, { threshold: 0.01 });
+      }, { threshold: 0.01 });
+      items.forEach(el => {
       items.forEach(el => {
         // pause until visible (CSS sets paused, just observe)
+        // pause until visible (CSS sets paused, just observe)
+        ob.observe(el);
         ob.observe(el);
       });
+      });
+    })();
     })();
   </script>
+  </script>
+  <script>
   <script>
     window.addEventListener("load", () => {
+    window.addEventListener("load", () => {
+      const container = document.querySelector(".floating-elements");
       const container = document.querySelector(".floating-elements");
       if (!container) return;
+      if (!container) return;
+      const rect = container.getBoundingClientRect();
       const rect = container.getBoundingClientRect();
       document.querySelectorAll(".floating-currency").forEach(el => {
+      document.querySelectorAll(".floating-currency").forEach(el => {
+        const elSize = 40;
         const elSize = 40;
         const top = Math.max(0, Math.random() * (rect.height - elSize));
+        const top = Math.max(0, Math.random() * (rect.height - elSize));
+        const left = Math.max(0, Math.random() * (rect.width - elSize));
         const left = Math.max(0, Math.random() * (rect.width - elSize));
         el.style.top = `${top}px`;
+        el.style.top = `${top}px`;
+        el.style.left = `${left}px`;
         el.style.left = `${left}px`;
       });
+      });
+    });
     });
   </script>
+  </script>
+</html>
 </html>

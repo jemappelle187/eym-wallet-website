@@ -1096,6 +1096,26 @@
   </script>
 </body>
   <script>
+    (function(){
+      const items = document.querySelectorAll(".floating-currency");
+      if (!items.length || !( in window)) return;
+      const ob = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            const el = e.target;
+            el.style.animationPlayState = "running";
+            el.style.animationDelay = "0s";
+            ob.unobserve(el);
+          }
+        });
+      }, { threshold: 0.01 });
+      items.forEach(el => {
+        // pause until visible (CSS sets paused, just observe)
+        ob.observe(el);
+      });
+    })();
+  </script>
+  <script>
     window.addEventListener("load", () => {
       const container = document.querySelector(".floating-elements");
       if (!container) return;

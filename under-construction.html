@@ -1095,4 +1095,18 @@
     });
   </script>
 </body>
+  <script>
+    window.addEventListener("load", () => {
+      const container = document.querySelector(".floating-elements");
+      if (!container) return;
+      const rect = container.getBoundingClientRect();
+      document.querySelectorAll(".floating-currency").forEach(el => {
+        const elSize = 40;
+        const top = Math.max(0, Math.random() * (rect.height - elSize));
+        const left = Math.max(0, Math.random() * (rect.width - elSize));
+        el.style.top = `${top}px`;
+        el.style.left = `${left}px`;
+      });
+    });
+  </script>
 </html>

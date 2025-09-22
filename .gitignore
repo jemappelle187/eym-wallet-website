@@ -75,3 +75,9 @@ logs
 # Temporary files
 *.tmp
 *.temp
+
+# --- local backups & working folders ---
+.backup/
+*backup*
+backup-original-website/
+backup_manual/
